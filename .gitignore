@@ -4,5 +4,5 @@ wandb/
 # Data folder
 Data/
 
-# pth
-*.pth
+# Result
+Result/
