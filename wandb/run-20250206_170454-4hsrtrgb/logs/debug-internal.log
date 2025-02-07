@@ -1,0 +1,193 @@
+2025-02-06 17:04:54,661 INFO    StreamThr :1598243 [internal.py:wandb_internal():86] W&B internal server running at pid: 1598243, started at: 2025-02-06 17:04:54.660094
+2025-02-06 17:04:54,666 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: status
+2025-02-06 17:04:54,671 INFO    WriterThread:1598243 [datastore.py:open_for_write():87] open: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/run-4hsrtrgb.wandb
+2025-02-06 17:04:54,672 DEBUG   SenderThread:1598243 [sender.py:send():382] send: header
+2025-02-06 17:04:54,673 DEBUG   SenderThread:1598243 [sender.py:send():382] send: run
+2025-02-06 17:04:54,912 INFO    SenderThread:1598243 [dir_watcher.py:__init__():211] watching files in: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files
+2025-02-06 17:04:54,912 INFO    SenderThread:1598243 [sender.py:_start_run_threads():1136] run started: 4hsrtrgb with start time 1738879494.659958
+2025-02-06 17:04:54,928 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: check_version
+2025-02-06 17:04:54,929 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: check_version
+2025-02-06 17:04:55,073 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: run_start
+2025-02-06 17:04:55,118 DEBUG   HandlerThread:1598243 [system_info.py:__init__():27] System info init
+2025-02-06 17:04:55,118 DEBUG   HandlerThread:1598243 [system_info.py:__init__():42] System info init done
+2025-02-06 17:04:55,118 INFO    HandlerThread:1598243 [system_monitor.py:start():194] Starting system monitor
+2025-02-06 17:04:55,118 INFO    SystemMonitor:1598243 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2025-02-06 17:04:55,120 INFO    HandlerThread:1598243 [system_monitor.py:probe():214] Collecting system info
+2025-02-06 17:04:55,121 INFO    SystemMonitor:1598243 [interfaces.py:start():190] Started cpu monitoring
+2025-02-06 17:04:55,122 INFO    SystemMonitor:1598243 [interfaces.py:start():190] Started disk monitoring
+2025-02-06 17:04:55,126 INFO    SystemMonitor:1598243 [interfaces.py:start():190] Started gpu monitoring
+2025-02-06 17:04:55,129 INFO    SystemMonitor:1598243 [interfaces.py:start():190] Started memory monitoring
+2025-02-06 17:04:55,131 INFO    SystemMonitor:1598243 [interfaces.py:start():190] Started network monitoring
+2025-02-06 17:04:55,189 DEBUG   HandlerThread:1598243 [system_info.py:probe():151] Probing system
+2025-02-06 17:04:55,191 DEBUG   HandlerThread:1598243 [gitlib.py:_init_repo():56] git repository is invalid
+2025-02-06 17:04:55,191 DEBUG   HandlerThread:1598243 [system_info.py:probe():199] Probing system done
+2025-02-06 17:04:55,191 DEBUG   HandlerThread:1598243 [system_monitor.py:probe():223] {'os': 'Linux-5.4.0-204-generic-x86_64-with-glibc2.31', 'python': '3.11.5', 'heartbeatAt': '2025-02-06T22:04:55.189263', 'startedAt': '2025-02-06T22:04:54.652030', 'docker': None, 'cuda': None, 'args': ('--run_name', 'firstrun ssdvgg'), 'state': 'running', 'program': '/home/yec23006/projects/research/merfish/FasterRCNN/SSD_VGG.py', 'codePathLocal': 'SSD_VGG.py', 'codePath': 'SSD_VGG.py', 'host': 'cardinal.engr.uconn.edu', 'username': 'yec23006', 'executable': '/home/yec23006/.conda/envs/torch121/bin/python', 'cpu_count': 36, 'cpu_count_logical': 72, 'cpu_freq': {'current': 807.2294166666666, 'min': 800.0, 'max': 4616.666666666667}, 'cpu_freq_per_core': [{'current': 800.046, 'min': 800.0, 'max': 4600.0}, {'current': 800.656, 'min': 800.0, 'max': 4600.0}, {'current': 800.649, 'min': 800.0, 'max': 4600.0}, {'current': 800.333, 'min': 800.0, 'max': 4600.0}, {'current': 800.637, 'min': 800.0, 'max': 4600.0}, {'current': 800.337, 'min': 800.0, 'max': 4600.0}, {'current': 800.329, 'min': 800.0, 'max': 4600.0}, {'current': 799.671, 'min': 800.0, 'max': 4600.0}, {'current': 800.334, 'min': 800.0, 'max': 4600.0}, {'current': 800.327, 'min': 800.0, 'max': 4600.0}, {'current': 800.335, 'min': 800.0, 'max': 4600.0}, {'current': 800.67, 'min': 800.0, 'max': 4600.0}, {'current': 800.632, 'min': 800.0, 'max': 4700.0}, {'current': 800.324, 'min': 800.0, 'max': 4600.0}, {'current': 801.326, 'min': 800.0, 'max': 4700.0}, {'current': 800.316, 'min': 800.0, 'max': 4600.0}, {'current': 801.631, 'min': 800.0, 'max': 4600.0}, {'current': 800.33, 'min': 800.0, 'max': 4600.0}, {'current': 900.401, 'min': 800.0, 'max': 4800.0}, {'current': 900.0, 'min': 800.0, 'max': 4800.0}, {'current': 800.315, 'min': 800.0, 'max': 4600.0}, {'current': 2144.501, 'min': 800.0, 'max': 4600.0}, {'current': 800.333, 'min': 800.0, 'max': 4600.0}, {'current': 800.663, 'min': 800.0, 'max': 4600.0}, {'current': 800.644, 'min': 800.0, 'max': 4600.0}, {'current': 800.078, 'min': 800.0, 'max': 4600.0}, {'current': 801.013, 'min': 800.0, 'max': 4600.0}, {'current': 801.061, 'min': 800.0, 'max': 4600.0}, {'current': 799.734, 'min': 800.0, 'max': 4600.0}, {'current': 800.267, 'min': 800.0, 'max': 4600.0}, {'current': 800.321, 'min': 800.0, 'max': 4600.0}, {'current': 802.228, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 800.337, 'min': 800.0, 'max': 4600.0}, {'current': 800.336, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 800.072, 'min': 800.0, 'max': 4600.0}, {'current': 800.671, 'min': 800.0, 'max': 4600.0}, {'current': 801.009, 'min': 800.0, 'max': 4600.0}, {'current': 800.679, 'min': 800.0, 'max': 4600.0}, {'current': 801.331, 'min': 800.0, 'max': 4600.0}, {'current': 801.305, 'min': 800.0, 'max': 4600.0}, {'current': 800.406, 'min': 800.0, 'max': 4600.0}, {'current': 800.655, 'min': 800.0, 'max': 4600.0}, {'current': 800.689, 'min': 800.0, 'max': 4600.0}, {'current': 800.961, 'min': 800.0, 'max': 4600.0}, {'current': 801.002, 'min': 800.0, 'max': 4600.0}, {'current': 801.034, 'min': 800.0, 'max': 4600.0}, {'current': 800.666, 'min': 800.0, 'max': 4700.0}, {'current': 800.333, 'min': 800.0, 'max': 4600.0}, {'current': 801.013, 'min': 800.0, 'max': 4700.0}, {'current': 800.65, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 800.342, 'min': 800.0, 'max': 4600.0}, {'current': 901.241, 'min': 800.0, 'max': 4800.0}, {'current': 900.403, 'min': 800.0, 'max': 4800.0}, {'current': 800.959, 'min': 800.0, 'max': 4600.0}, {'current': 2547.677, 'min': 800.0, 'max': 4600.0}, {'current': 800.977, 'min': 800.0, 'max': 4600.0}, {'current': 801.011, 'min': 800.0, 'max': 4600.0}, {'current': 800.676, 'min': 800.0, 'max': 4600.0}, {'current': 801.026, 'min': 800.0, 'max': 4600.0}, {'current': 800.342, 'min': 800.0, 'max': 4600.0}, {'current': 800.577, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 801.382, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 799.685, 'min': 800.0, 'max': 4600.0}, {'current': 800.674, 'min': 800.0, 'max': 4600.0}, {'current': 800.998, 'min': 800.0, 'max': 4600.0}, {'current': 801.018, 'min': 800.0, 'max': 4600.0}, {'current': 800.653, 'min': 800.0, 'max': 4600.0}], 'disk': {'/': {'total': 7084.509567260742, 'used': 3309.5413360595703}}, 'gpu': 'NVIDIA RTX A6000', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}], 'memory': {'total': 755.0097694396973}}
+2025-02-06 17:04:55,192 INFO    HandlerThread:1598243 [system_monitor.py:probe():224] Finished collecting system info
+2025-02-06 17:04:55,192 INFO    HandlerThread:1598243 [system_monitor.py:probe():227] Publishing system info
+2025-02-06 17:04:55,192 DEBUG   HandlerThread:1598243 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2025-02-06 17:04:55,915 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/conda-environment.yaml
+2025-02-06 17:05:01,625 DEBUG   HandlerThread:1598243 [system_info.py:_save_conda():220] Saving conda packages done
+2025-02-06 17:05:01,627 INFO    HandlerThread:1598243 [system_monitor.py:probe():229] Finished publishing system info
+2025-02-06 17:05:01,630 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: status_report
+2025-02-06 17:05:01,631 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: keepalive
+2025-02-06 17:05:01,632 DEBUG   SenderThread:1598243 [sender.py:send():382] send: files
+2025-02-06 17:05:01,632 INFO    SenderThread:1598243 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2025-02-06 17:05:01,641 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: python_packages
+2025-02-06 17:05:01,642 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: python_packages
+2025-02-06 17:05:01,646 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: stop_status
+2025-02-06 17:05:01,647 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: stop_status
+2025-02-06 17:05:01,649 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: internal_messages
+2025-02-06 17:05:01,830 DEBUG   SenderThread:1598243 [sender.py:send():382] send: telemetry
+2025-02-06 17:05:01,830 DEBUG   SenderThread:1598243 [sender.py:send():382] send: telemetry
+2025-02-06 17:05:01,831 DEBUG   SenderThread:1598243 [sender.py:send():382] send: run
+2025-02-06 17:05:01,907 INFO    SenderThread:1598243 [sender.py:send_run():1010] updated run: 4hsrtrgb
+2025-02-06 17:05:01,915 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/conda-environment.yaml
+2025-02-06 17:05:01,915 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/config.yaml
+2025-02-06 17:05:01,915 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/wandb-metadata.json
+2025-02-06 17:05:01,916 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/requirements.txt
+2025-02-06 17:05:01,916 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/output.log
+2025-02-06 17:05:02,229 INFO    wandb-upload_0:1598243 [upload_job.py:push():131] Uploaded file /tmp/tmp5z2c86lzwandb/2nlo9l9a-wandb-metadata.json
+2025-02-06 17:05:03,916 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/output.log
+2025-02-06 17:05:04,780 DEBUG   SenderThread:1598243 [sender.py:send():382] send: exit
+2025-02-06 17:05:04,780 INFO    SenderThread:1598243 [sender.py:send_exit():589] handling exit code: 1
+2025-02-06 17:05:04,780 INFO    SenderThread:1598243 [sender.py:send_exit():591] handling runtime: 9
+2025-02-06 17:05:04,780 INFO    SenderThread:1598243 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2025-02-06 17:05:04,781 INFO    SenderThread:1598243 [sender.py:send_exit():597] send defer
+2025-02-06 17:05:04,781 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:04,781 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 0
+2025-02-06 17:05:04,781 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:04,781 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 0
+2025-02-06 17:05:04,781 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 1
+2025-02-06 17:05:04,782 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:04,782 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 1
+2025-02-06 17:05:04,782 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:04,782 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 1
+2025-02-06 17:05:04,782 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 2
+2025-02-06 17:05:04,782 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:04,782 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 2
+2025-02-06 17:05:04,782 INFO    HandlerThread:1598243 [system_monitor.py:finish():203] Stopping system monitor
+2025-02-06 17:05:04,782 INFO    HandlerThread:1598243 [interfaces.py:finish():202] Joined cpu monitor
+2025-02-06 17:05:04,784 DEBUG   SystemMonitor:1598243 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2025-02-06 17:05:04,784 DEBUG   SystemMonitor:1598243 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2025-02-06 17:05:04,784 INFO    HandlerThread:1598243 [interfaces.py:finish():202] Joined disk monitor
+2025-02-06 17:05:04,785 DEBUG   SystemMonitor:1598243 [system_monitor.py:_start():183] Publishing last batch of metrics
+2025-02-06 17:05:04,916 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/wandb-summary.json
+2025-02-06 17:05:04,931 INFO    HandlerThread:1598243 [interfaces.py:finish():202] Joined gpu monitor
+2025-02-06 17:05:04,931 INFO    HandlerThread:1598243 [interfaces.py:finish():202] Joined memory monitor
+2025-02-06 17:05:04,931 INFO    HandlerThread:1598243 [interfaces.py:finish():202] Joined network monitor
+2025-02-06 17:05:04,932 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:04,932 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 2
+2025-02-06 17:05:04,932 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 3
+2025-02-06 17:05:04,932 DEBUG   SenderThread:1598243 [sender.py:send():382] send: stats
+2025-02-06 17:05:04,934 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:04,934 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 3
+2025-02-06 17:05:04,934 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:04,934 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 3
+2025-02-06 17:05:04,934 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 4
+2025-02-06 17:05:04,934 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:04,934 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 4
+2025-02-06 17:05:04,934 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:04,934 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 4
+2025-02-06 17:05:04,935 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 5
+2025-02-06 17:05:04,935 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:04,935 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 5
+2025-02-06 17:05:04,935 DEBUG   SenderThread:1598243 [sender.py:send():382] send: summary
+2025-02-06 17:05:04,935 INFO    SenderThread:1598243 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2025-02-06 17:05:04,936 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:04,936 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 5
+2025-02-06 17:05:04,936 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 6
+2025-02-06 17:05:04,936 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:04,936 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 6
+2025-02-06 17:05:04,936 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:04,936 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 6
+2025-02-06 17:05:04,941 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: status_report
+2025-02-06 17:05:05,044 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 7
+2025-02-06 17:05:05,044 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:05,044 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 7
+2025-02-06 17:05:05,045 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:05,045 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 7
+2025-02-06 17:05:05,780 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-06 17:05:05,915 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 8
+2025-02-06 17:05:05,915 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: poll_exit
+2025-02-06 17:05:05,918 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:05,919 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 8
+2025-02-06 17:05:05,921 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:05,921 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/config.yaml
+2025-02-06 17:05:05,922 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 8
+2025-02-06 17:05:05,922 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/wandb-summary.json
+2025-02-06 17:05:05,922 INFO    SenderThread:1598243 [job_builder.py:build():296] Attempting to build job artifact
+2025-02-06 17:05:05,923 INFO    Thread-13 :1598243 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/output.log
+2025-02-06 17:05:05,924 INFO    SenderThread:1598243 [job_builder.py:_get_source_type():437] no source found
+2025-02-06 17:05:05,924 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 9
+2025-02-06 17:05:05,924 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:05,924 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 9
+2025-02-06 17:05:05,925 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:05,925 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 9
+2025-02-06 17:05:05,925 INFO    SenderThread:1598243 [dir_watcher.py:finish():358] shutting down directory watcher
+2025-02-06 17:05:06,782 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-06 17:05:06,924 INFO    SenderThread:1598243 [dir_watcher.py:finish():388] scan: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files
+2025-02-06 17:05:06,925 INFO    SenderThread:1598243 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/output.log output.log
+2025-02-06 17:05:06,925 INFO    SenderThread:1598243 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/requirements.txt requirements.txt
+2025-02-06 17:05:06,926 INFO    SenderThread:1598243 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/wandb-metadata.json wandb-metadata.json
+2025-02-06 17:05:06,931 INFO    SenderThread:1598243 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/wandb-summary.json wandb-summary.json
+2025-02-06 17:05:06,936 INFO    SenderThread:1598243 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/conda-environment.yaml conda-environment.yaml
+2025-02-06 17:05:06,937 INFO    SenderThread:1598243 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/config.yaml config.yaml
+2025-02-06 17:05:06,937 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 10
+2025-02-06 17:05:06,937 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: poll_exit
+2025-02-06 17:05:06,937 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:06,942 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 10
+2025-02-06 17:05:06,953 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:06,953 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 10
+2025-02-06 17:05:06,953 INFO    SenderThread:1598243 [file_pusher.py:finish():175] shutting down file pusher
+2025-02-06 17:05:07,259 INFO    wandb-upload_0:1598243 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/output.log
+2025-02-06 17:05:07,600 INFO    wandb-upload_1:1598243 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/requirements.txt
+2025-02-06 17:05:07,732 INFO    wandb-upload_4:1598243 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/config.yaml
+2025-02-06 17:05:07,742 INFO    wandb-upload_2:1598243 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/wandb-summary.json
+2025-02-06 17:05:07,782 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-06 17:05:07,783 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: poll_exit
+2025-02-06 17:05:07,805 INFO    wandb-upload_3:1598243 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/files/conda-environment.yaml
+2025-02-06 17:05:08,005 INFO    Thread-12 (_thread_body):1598243 [sender.py:transition_state():617] send defer: 11
+2025-02-06 17:05:08,006 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:08,006 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 11
+2025-02-06 17:05:08,008 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:08,009 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 11
+2025-02-06 17:05:08,009 INFO    SenderThread:1598243 [file_pusher.py:join():181] waiting for file pusher
+2025-02-06 17:05:08,009 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 12
+2025-02-06 17:05:08,009 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:08,009 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 12
+2025-02-06 17:05:08,010 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:08,010 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 12
+2025-02-06 17:05:08,010 INFO    SenderThread:1598243 [file_stream.py:finish():595] file stream finish called
+2025-02-06 17:05:08,073 INFO    SenderThread:1598243 [file_stream.py:finish():599] file stream finish is done
+2025-02-06 17:05:08,073 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 13
+2025-02-06 17:05:08,073 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:08,074 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 13
+2025-02-06 17:05:08,074 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:08,074 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 13
+2025-02-06 17:05:08,075 INFO    SenderThread:1598243 [sender.py:transition_state():617] send defer: 14
+2025-02-06 17:05:08,075 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: defer
+2025-02-06 17:05:08,076 INFO    HandlerThread:1598243 [handler.py:handle_request_defer():172] handle defer: 14
+2025-02-06 17:05:08,076 DEBUG   SenderThread:1598243 [sender.py:send():382] send: final
+2025-02-06 17:05:08,077 DEBUG   SenderThread:1598243 [sender.py:send():382] send: footer
+2025-02-06 17:05:08,077 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: defer
+2025-02-06 17:05:08,077 INFO    SenderThread:1598243 [sender.py:send_request_defer():613] handle sender defer: 14
+2025-02-06 17:05:08,078 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-06 17:05:08,078 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: poll_exit
+2025-02-06 17:05:08,079 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-06 17:05:08,080 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: poll_exit
+2025-02-06 17:05:08,080 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: server_info
+2025-02-06 17:05:08,081 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: server_info
+2025-02-06 17:05:08,081 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: get_summary
+2025-02-06 17:05:08,084 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: sampled_history
+2025-02-06 17:05:08,085 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: internal_messages
+2025-02-06 17:05:08,085 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: job_info
+2025-02-06 17:05:08,127 DEBUG   SenderThread:1598243 [sender.py:send_request():409] send_request: job_info
+2025-02-06 17:05:08,128 INFO    MainThread:1598243 [wandb_run.py:_footer_history_summary_info():3857] rendering history
+2025-02-06 17:05:08,129 INFO    MainThread:1598243 [wandb_run.py:_footer_history_summary_info():3889] rendering summary
+2025-02-06 17:05:08,129 INFO    MainThread:1598243 [wandb_run.py:_footer_sync_info():3816] logging synced files
+2025-02-06 17:05:08,129 DEBUG   HandlerThread:1598243 [handler.py:handle_request():146] handle_request: shutdown
+2025-02-06 17:05:08,130 INFO    HandlerThread:1598243 [handler.py:finish():869] shutting down handler
+2025-02-06 17:05:09,086 INFO    WriterThread:1598243 [datastore.py:close():296] close: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250206_170454-4hsrtrgb/run-4hsrtrgb.wandb
+2025-02-06 17:05:09,128 INFO    SenderThread:1598243 [sender.py:finish():1572] shutting down sender
+2025-02-06 17:05:09,128 INFO    SenderThread:1598243 [file_pusher.py:finish():175] shutting down file pusher
+2025-02-06 17:05:09,128 INFO    SenderThread:1598243 [file_pusher.py:join():181] waiting for file pusher

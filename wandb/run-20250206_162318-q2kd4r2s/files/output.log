@@ -1,0 +1,12 @@
+/home/yec23006/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/yec23006/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=SSD300_VGG16_Weights.COCO_V1`. You can also use `weights=SSD300_VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "/home/yec23006/projects/research/merfish/FasterRCNN/SSD_VGG.py", line 186, in <module>
+    target_img, pred_img = predict_and_visualize(model, dataset[0:10], idx=0)
+                                                        ~~~~~~~^^^^^^
+  File "/home/yec23006/projects/research/merfish/FasterRCNN/SSD_VGG.py", line 40, in __getitem__
+    image = cv2.imread(self.image_paths[idx], cv2.IMREAD_GRAYSCALE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Can't convert object to 'str' for 'filename'

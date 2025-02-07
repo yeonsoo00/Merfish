@@ -1,0 +1,14 @@
+/home/yec23006/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/yec23006/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=MobileNet_V2_Weights.IMAGENET1K_V1`. You can also use `weights=MobileNet_V2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "/home/yec23006/projects/research/merfish/FasterRCNN/SSD.py", line 432, in <module>
+    train_ssd(model, train_loader, num_epochs=num_epochs, learning_rate=learning_rate, device=device)
+  File "/home/yec23006/projects/research/merfish/FasterRCNN/SSD.py", line 368, in train_ssd
+    decoded_pred_bboxes = decode_ssd_bboxes(torch.tensor(pred_bboxes), model.module.get_anchors())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yec23006/projects/research/merfish/FasterRCNN/SSD.py", line 164, in decode_ssd_bboxes
+    decoded_boxes[:, 0] = anchor_boxes[:, 0] + pred_bboxes[:, 0] * variance[0] * anchor_boxes[:, 2]
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+RuntimeError: The size of tensor a (384) must match the size of tensor b (4095) at non-singleton dimension 0

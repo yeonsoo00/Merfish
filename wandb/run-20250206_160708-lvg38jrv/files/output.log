@@ -1,0 +1,15 @@
+/home/yec23006/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/yec23006/.local/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=SSD300_VGG16_Weights.COCO_V1`. You can also use `weights=SSD300_VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Downloading: "https://download.pytorch.org/models/ssd300_vgg16_coco-b556d3b4.pth" to /home/yec23006/.cache/torch/hub/checkpoints/ssd300_vgg16_coco-b556d3b4.pth
+
+
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 136M/136M [00:04<00:00, 31.6MB/s]
+Traceback (most recent call last):
+  File "/home/yec23006/projects/research/merfish/FasterRCNN/SSD_VGG.py", line 144, in <module>
+    in_features = model.head.classification_head.num_classes
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yec23006/.local/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1614, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'SSDClassificationHead' object has no attribute 'num_classes'

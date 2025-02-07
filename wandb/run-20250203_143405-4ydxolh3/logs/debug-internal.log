@@ -1,0 +1,950 @@
+2025-02-03 14:34:05,134 INFO    StreamThr :1107284 [internal.py:wandb_internal():86] W&B internal server running at pid: 1107284, started at: 2025-02-03 14:34:05.133458
+2025-02-03 14:34:05,140 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status
+2025-02-03 14:34:05,145 INFO    WriterThread:1107284 [datastore.py:open_for_write():87] open: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/run-4ydxolh3.wandb
+2025-02-03 14:34:05,147 DEBUG   SenderThread:1107284 [sender.py:send():382] send: header
+2025-02-03 14:34:05,147 DEBUG   SenderThread:1107284 [sender.py:send():382] send: run
+2025-02-03 14:34:05,425 INFO    SenderThread:1107284 [dir_watcher.py:__init__():211] watching files in: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files
+2025-02-03 14:34:05,425 INFO    SenderThread:1107284 [sender.py:_start_run_threads():1136] run started: 4ydxolh3 with start time 1738611245.132935
+2025-02-03 14:34:05,438 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: check_version
+2025-02-03 14:34:05,440 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: check_version
+2025-02-03 14:34:05,564 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: run_start
+2025-02-03 14:34:05,608 DEBUG   HandlerThread:1107284 [system_info.py:__init__():27] System info init
+2025-02-03 14:34:05,608 DEBUG   HandlerThread:1107284 [system_info.py:__init__():42] System info init done
+2025-02-03 14:34:05,608 INFO    HandlerThread:1107284 [system_monitor.py:start():194] Starting system monitor
+2025-02-03 14:34:05,609 INFO    SystemMonitor:1107284 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2025-02-03 14:34:05,611 INFO    HandlerThread:1107284 [system_monitor.py:probe():214] Collecting system info
+2025-02-03 14:34:05,612 INFO    SystemMonitor:1107284 [interfaces.py:start():190] Started cpu monitoring
+2025-02-03 14:34:05,616 INFO    SystemMonitor:1107284 [interfaces.py:start():190] Started disk monitoring
+2025-02-03 14:34:05,618 INFO    SystemMonitor:1107284 [interfaces.py:start():190] Started gpu monitoring
+2025-02-03 14:34:05,622 INFO    SystemMonitor:1107284 [interfaces.py:start():190] Started memory monitoring
+2025-02-03 14:34:05,623 INFO    SystemMonitor:1107284 [interfaces.py:start():190] Started network monitoring
+2025-02-03 14:34:05,679 DEBUG   HandlerThread:1107284 [system_info.py:probe():151] Probing system
+2025-02-03 14:34:05,682 DEBUG   HandlerThread:1107284 [gitlib.py:_init_repo():56] git repository is invalid
+2025-02-03 14:34:05,682 DEBUG   HandlerThread:1107284 [system_info.py:probe():199] Probing system done
+2025-02-03 14:34:05,682 DEBUG   HandlerThread:1107284 [system_monitor.py:probe():223] {'os': 'Linux-5.4.0-204-generic-x86_64-with-glibc2.31', 'python': '3.11.5', 'heartbeatAt': '2025-02-03T19:34:05.679638', 'startedAt': '2025-02-03T19:34:05.125701', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/yec23006/projects/research/merfish/FasterRCNN/SSD.py', 'codePathLocal': 'SSD.py', 'codePath': 'SSD.py', 'host': 'cardinal.engr.uconn.edu', 'username': 'yec23006', 'executable': '/home/yec23006/.conda/envs/torch121/bin/python', 'cpu_count': 36, 'cpu_count_logical': 72, 'cpu_freq': {'current': 809.0165416666667, 'min': 800.0, 'max': 4616.666666666667}, 'cpu_freq_per_core': [{'current': 799.946, 'min': 800.0, 'max': 4600.0}, {'current': 800.647, 'min': 800.0, 'max': 4600.0}, {'current': 800.146, 'min': 800.0, 'max': 4600.0}, {'current': 799.663, 'min': 800.0, 'max': 4600.0}, {'current': 800.627, 'min': 800.0, 'max': 4600.0}, {'current': 800.667, 'min': 800.0, 'max': 4600.0}, {'current': 800.327, 'min': 800.0, 'max': 4600.0}, {'current': 800.33, 'min': 800.0, 'max': 4600.0}, {'current': 800.34, 'min': 800.0, 'max': 4600.0}, {'current': 800.663, 'min': 800.0, 'max': 4600.0}, {'current': 801.659, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 800.327, 'min': 800.0, 'max': 4700.0}, {'current': 800.67, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4700.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 799.817, 'min': 800.0, 'max': 4600.0}, {'current': 800.104, 'min': 800.0, 'max': 4600.0}, {'current': 1942.144, 'min': 800.0, 'max': 4800.0}, {'current': 900.0, 'min': 800.0, 'max': 4800.0}, {'current': 800.169, 'min': 800.0, 'max': 4600.0}, {'current': 800.33, 'min': 800.0, 'max': 4600.0}, {'current': 800.671, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 800.382, 'min': 800.0, 'max': 4600.0}, {'current': 800.327, 'min': 800.0, 'max': 4600.0}, {'current': 798.885, 'min': 800.0, 'max': 4600.0}, {'current': 801.106, 'min': 800.0, 'max': 4600.0}, {'current': 800.689, 'min': 800.0, 'max': 4600.0}, {'current': 799.327, 'min': 800.0, 'max': 4600.0}, {'current': 800.671, 'min': 800.0, 'max': 4600.0}, {'current': 801.03, 'min': 800.0, 'max': 4600.0}, {'current': 799.661, 'min': 800.0, 'max': 4600.0}, {'current': 800.683, 'min': 800.0, 'max': 4600.0}, {'current': 800.339, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 800.336, 'min': 800.0, 'max': 4600.0}, {'current': 800.331, 'min': 800.0, 'max': 4600.0}, {'current': 800.658, 'min': 800.0, 'max': 4600.0}, {'current': 800.333, 'min': 800.0, 'max': 4600.0}, {'current': 800.669, 'min': 800.0, 'max': 4600.0}, {'current': 800.335, 'min': 800.0, 'max': 4600.0}, {'current': 801.036, 'min': 800.0, 'max': 4600.0}, {'current': 800.684, 'min': 800.0, 'max': 4600.0}, {'current': 800.682, 'min': 800.0, 'max': 4600.0}, {'current': 800.671, 'min': 800.0, 'max': 4600.0}, {'current': 800.704, 'min': 800.0, 'max': 4600.0}, {'current': 800.659, 'min': 800.0, 'max': 4700.0}, {'current': 801.722, 'min': 800.0, 'max': 4600.0}, {'current': 800.677, 'min': 800.0, 'max': 4700.0}, {'current': 800.345, 'min': 800.0, 'max': 4600.0}, {'current': 800.268, 'min': 800.0, 'max': 4600.0}, {'current': 800.337, 'min': 800.0, 'max': 4600.0}, {'current': 1779.843, 'min': 800.0, 'max': 4800.0}, {'current': 900.781, 'min': 800.0, 'max': 4800.0}, {'current': 800.657, 'min': 800.0, 'max': 4600.0}, {'current': 800.338, 'min': 800.0, 'max': 4600.0}, {'current': 800.69, 'min': 800.0, 'max': 4600.0}, {'current': 800.337, 'min': 800.0, 'max': 4600.0}, {'current': 800.222, 'min': 800.0, 'max': 4600.0}, {'current': 801.023, 'min': 800.0, 'max': 4600.0}, {'current': 800.0, 'min': 800.0, 'max': 4600.0}, {'current': 800.34, 'min': 800.0, 'max': 4600.0}, {'current': 800.679, 'min': 800.0, 'max': 4600.0}, {'current': 800.667, 'min': 800.0, 'max': 4600.0}, {'current': 800.986, 'min': 800.0, 'max': 4600.0}, {'current': 800.689, 'min': 800.0, 'max': 4600.0}, {'current': 800.69, 'min': 800.0, 'max': 4600.0}, {'current': 801.34, 'min': 800.0, 'max': 4600.0}, {'current': 800.343, 'min': 800.0, 'max': 4600.0}, {'current': 800.648, 'min': 800.0, 'max': 4600.0}], 'disk': {'/': {'total': 7084.509567260742, 'used': 3307.2439346313477}}, 'gpu': 'NVIDIA RTX A6000', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}], 'memory': {'total': 755.0097694396973}}
+2025-02-03 14:34:05,682 INFO    HandlerThread:1107284 [system_monitor.py:probe():224] Finished collecting system info
+2025-02-03 14:34:05,682 INFO    HandlerThread:1107284 [system_monitor.py:probe():227] Publishing system info
+2025-02-03 14:34:05,682 DEBUG   HandlerThread:1107284 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2025-02-03 14:34:06,428 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/conda-environment.yaml
+2025-02-03 14:34:11,962 DEBUG   HandlerThread:1107284 [system_info.py:_save_conda():220] Saving conda packages done
+2025-02-03 14:34:11,964 INFO    HandlerThread:1107284 [system_monitor.py:probe():229] Finished publishing system info
+2025-02-03 14:34:11,966 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:11,966 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: keepalive
+2025-02-03 14:34:11,968 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:11,968 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2025-02-03 14:34:11,977 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: python_packages
+2025-02-03 14:34:11,978 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: python_packages
+2025-02-03 14:34:11,982 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: stop_status
+2025-02-03 14:34:11,982 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: internal_messages
+2025-02-03 14:34:11,983 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: stop_status
+2025-02-03 14:34:12,144 DEBUG   SenderThread:1107284 [sender.py:send():382] send: telemetry
+2025-02-03 14:34:12,144 DEBUG   SenderThread:1107284 [sender.py:send():382] send: telemetry
+2025-02-03 14:34:12,144 DEBUG   SenderThread:1107284 [sender.py:send():382] send: run
+2025-02-03 14:34:12,228 INFO    SenderThread:1107284 [sender.py:send_run():1010] updated run: 4ydxolh3
+2025-02-03 14:34:12,301 INFO    wandb-upload_0:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/4y9gwa8c-wandb-metadata.json
+2025-02-03 14:34:12,428 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/config.yaml
+2025-02-03 14:34:12,428 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/conda-environment.yaml
+2025-02-03 14:34:12,429 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/wandb-metadata.json
+2025-02-03 14:34:12,429 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/requirements.txt
+2025-02-03 14:34:12,429 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/output.log
+2025-02-03 14:34:14,429 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/output.log
+2025-02-03 14:34:16,234 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:21,235 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:26,236 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:26,979 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: stop_status
+2025-02-03 14:34:26,981 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: internal_messages
+2025-02-03 14:34:26,981 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: stop_status
+2025-02-03 14:34:32,044 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:35,192 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,193 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_90a48278210edb1a81df.png with policy now
+2025-02-03 14:34:35,200 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,201 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_630934e0fec6c77b4579.png with policy now
+2025-02-03 14:34:35,203 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,203 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_49e95d82a9cf0f11fbf1.png with policy now
+2025-02-03 14:34:35,211 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,212 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_7a69002b8029b7667490.png with policy now
+2025-02-03 14:34:35,217 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,218 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_048bccb132a7df073adc.png with policy now
+2025-02-03 14:34:35,219 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,220 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_53dfe02481297b597d70.png with policy now
+2025-02-03 14:34:35,220 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,220 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_f79f4adc8a5d207ec173.png with policy now
+2025-02-03 14:34:35,221 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,221 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_431a0e59d9dbe517b9b1.png with policy now
+2025-02-03 14:34:35,222 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,222 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_63a6ab951e8d92b15cf6.png with policy now
+2025-02-03 14:34:35,228 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,228 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_c7f4bac81bf49c4244d1.png with policy now
+2025-02-03 14:34:35,228 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,229 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_68c0832e33653e4bb7e7.png with policy now
+2025-02-03 14:34:35,230 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,230 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_ed8063ccfbe6f74e29e2.png with policy now
+2025-02-03 14:34:35,237 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,237 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_94d217f4d215f5f15d3f.png with policy now
+2025-02-03 14:34:35,237 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,237 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_e3dbb1f981861cfe519c.png with policy now
+2025-02-03 14:34:35,238 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,238 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_461541ca3154fc72e9a2.png with policy now
+2025-02-03 14:34:35,238 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,238 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_e19f163df15ba5383e63.png with policy now
+2025-02-03 14:34:35,240 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,240 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_42ee6f7d1c0acb36c74e.png with policy now
+2025-02-03 14:34:35,240 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,241 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_f3af47e9a752589fe56a.png with policy now
+2025-02-03 14:34:35,241 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,241 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_94f94482eeab795457dc.png with policy now
+2025-02-03 14:34:35,243 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,243 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_0_10daa150c44b120629a2.png with policy now
+2025-02-03 14:34:35,277 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,278 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_fe6394f72ed31341f022.png with policy now
+2025-02-03 14:34:35,281 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,281 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_0b7e12964a6cf6c2ab06.png with policy now
+2025-02-03 14:34:35,281 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,282 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_bb86a75d35754f92ab41.png with policy now
+2025-02-03 14:34:35,282 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,282 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_3a061237bbcc8dcdbde0.png with policy now
+2025-02-03 14:34:35,282 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,282 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_079aeca8172486ac7983.png with policy now
+2025-02-03 14:34:35,283 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,283 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_51838703e1fb217cac13.png with policy now
+2025-02-03 14:34:35,283 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,284 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_abb1a159df41d0336adb.png with policy now
+2025-02-03 14:34:35,285 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,289 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_3cc9e45a3f392a9e341a.png with policy now
+2025-02-03 14:34:35,289 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,289 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_d0ad46a9e3434b37661e.png with policy now
+2025-02-03 14:34:35,290 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,290 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_dd6c5aff71aff9bb9332.png with policy now
+2025-02-03 14:34:35,290 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,290 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_9d1aad2e2e2ec4b49e91.png with policy now
+2025-02-03 14:34:35,291 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,292 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_ae5f7ee7a9c7622080b7.png with policy now
+2025-02-03 14:34:35,292 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,292 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_bf37e71791c19cb80040.png with policy now
+2025-02-03 14:34:35,292 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,292 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_e440d700d3f488e57c48.png with policy now
+2025-02-03 14:34:35,293 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,293 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_8220bb9f87885cec5b55.png with policy now
+2025-02-03 14:34:35,294 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,294 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_20939f9ec76060840556.png with policy now
+2025-02-03 14:34:35,295 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,295 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_e253c24873573e93afa4.png with policy now
+2025-02-03 14:34:35,295 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,296 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_e3aa42b4eaf59206b8d5.png with policy now
+2025-02-03 14:34:35,296 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,296 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_429e0da37fba8b91668a.png with policy now
+2025-02-03 14:34:35,298 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,298 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_0_5c8bf0215a4f1bb101ab.png with policy now
+2025-02-03 14:34:35,326 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,329 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_6d8282e9e762ecc44609.png with policy now
+2025-02-03 14:34:35,335 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,340 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_1ea007c47e9ea9232673.png with policy now
+2025-02-03 14:34:35,342 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,342 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_21b143d79b8c91c21cf4.png with policy now
+2025-02-03 14:34:35,343 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,344 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_0673abf12144e0fe0031.png with policy now
+2025-02-03 14:34:35,344 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,344 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_358211652e18624d5ac5.png with policy now
+2025-02-03 14:34:35,345 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,345 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_429f34f1e274b45c18eb.png with policy now
+2025-02-03 14:34:35,345 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,346 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_872a0ae42f4e5a366178.png with policy now
+2025-02-03 14:34:35,346 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,346 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_7b00afc314d13b1558ca.png with policy now
+2025-02-03 14:34:35,347 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,347 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_566d832b1184a8885099.png with policy now
+2025-02-03 14:34:35,347 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,347 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_021d5fdde8b1e53c2494.png with policy now
+2025-02-03 14:34:35,347 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,347 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_fd8babf778590155545a.png with policy now
+2025-02-03 14:34:35,348 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,352 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_8254d849a9091935fa28.png with policy now
+2025-02-03 14:34:35,352 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,352 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_d5d6421b36868f22cf05.png with policy now
+2025-02-03 14:34:35,353 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,353 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_9bbcf5c5d23e8e8cfe6f.png with policy now
+2025-02-03 14:34:35,353 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,353 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_6f0fada2c21a3fb6db62.png with policy now
+2025-02-03 14:34:35,354 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,354 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_3f83b032b26a63c57682.png with policy now
+2025-02-03 14:34:35,354 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,354 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_86a7df4fd712bc3457d3.png with policy now
+2025-02-03 14:34:35,354 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,354 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_34ae3e65b1bc40b4fef8.png with policy now
+2025-02-03 14:34:35,355 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,356 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_04d3c97891d703163a7c.png with policy now
+2025-02-03 14:34:35,356 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:35,357 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_0_db72bd9fdaaf97302131.png with policy now
+2025-02-03 14:34:35,379 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: partial_history
+2025-02-03 14:34:35,391 DEBUG   SenderThread:1107284 [sender.py:send():382] send: history
+2025-02-03 14:34:35,395 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: summary_record
+2025-02-03 14:34:35,401 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2025-02-03 14:34:35,404 INFO    wandb-upload_0:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ca52avgt-media/images/Target_0_90a48278210edb1a81df.png
+2025-02-03 14:34:35,646 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_63a6ab951e8d92b15cf6.png
+2025-02-03 14:34:35,646 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_20939f9ec76060840556.png
+2025-02-03 14:34:35,646 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_e3dbb1f981861cfe519c.png
+2025-02-03 14:34:35,648 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_7a69002b8029b7667490.png
+2025-02-03 14:34:35,649 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_51838703e1fb217cac13.png
+2025-02-03 14:34:35,649 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_1ea007c47e9ea9232673.png
+2025-02-03 14:34:35,649 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_7b00afc314d13b1558ca.png
+2025-02-03 14:34:35,650 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_68c0832e33653e4bb7e7.png
+2025-02-03 14:34:35,650 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_04d3c97891d703163a7c.png
+2025-02-03 14:34:35,650 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_c7f4bac81bf49c4244d1.png
+2025-02-03 14:34:35,651 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_630934e0fec6c77b4579.png
+2025-02-03 14:34:35,651 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_34ae3e65b1bc40b4fef8.png
+2025-02-03 14:34:35,653 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_db72bd9fdaaf97302131.png
+2025-02-03 14:34:35,653 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_bb86a75d35754f92ab41.png
+2025-02-03 14:34:35,654 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_e440d700d3f488e57c48.png
+2025-02-03 14:34:35,654 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_6f0fada2c21a3fb6db62.png
+2025-02-03 14:34:35,655 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_fd8babf778590155545a.png
+2025-02-03 14:34:35,655 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_f79f4adc8a5d207ec173.png
+2025-02-03 14:34:35,657 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_94d217f4d215f5f15d3f.png
+2025-02-03 14:34:35,657 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_079aeca8172486ac7983.png
+2025-02-03 14:34:35,657 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_f3af47e9a752589fe56a.png
+2025-02-03 14:34:35,658 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_3f83b032b26a63c57682.png
+2025-02-03 14:34:35,658 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_fe6394f72ed31341f022.png
+2025-02-03 14:34:35,658 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_e253c24873573e93afa4.png
+2025-02-03 14:34:35,658 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_566d832b1184a8885099.png
+2025-02-03 14:34:35,663 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_dd6c5aff71aff9bb9332.png
+2025-02-03 14:34:35,664 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_872a0ae42f4e5a366178.png
+2025-02-03 14:34:35,664 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_429e0da37fba8b91668a.png
+2025-02-03 14:34:35,665 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_90a48278210edb1a81df.png
+2025-02-03 14:34:35,665 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_94f94482eeab795457dc.png
+2025-02-03 14:34:35,666 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_9bbcf5c5d23e8e8cfe6f.png
+2025-02-03 14:34:35,668 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_048bccb132a7df073adc.png
+2025-02-03 14:34:35,670 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_10daa150c44b120629a2.png
+2025-02-03 14:34:35,671 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_8220bb9f87885cec5b55.png
+2025-02-03 14:34:35,671 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_53dfe02481297b597d70.png
+2025-02-03 14:34:35,671 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_429f34f1e274b45c18eb.png
+2025-02-03 14:34:35,671 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_21b143d79b8c91c21cf4.png
+2025-02-03 14:34:35,672 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_49e95d82a9cf0f11fbf1.png
+2025-02-03 14:34:35,672 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/wandb-summary.json
+2025-02-03 14:34:35,672 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_42ee6f7d1c0acb36c74e.png
+2025-02-03 14:34:35,672 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_abb1a159df41d0336adb.png
+2025-02-03 14:34:35,673 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_0b7e12964a6cf6c2ab06.png
+2025-02-03 14:34:35,673 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_3cc9e45a3f392a9e341a.png
+2025-02-03 14:34:35,674 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_021d5fdde8b1e53c2494.png
+2025-02-03 14:34:35,677 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_ed8063ccfbe6f74e29e2.png
+2025-02-03 14:34:35,678 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_e19f163df15ba5383e63.png
+2025-02-03 14:34:35,678 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_358211652e18624d5ac5.png
+2025-02-03 14:34:35,679 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_e3aa42b4eaf59206b8d5.png
+2025-02-03 14:34:35,679 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_d0ad46a9e3434b37661e.png
+2025-02-03 14:34:35,680 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_431a0e59d9dbe517b9b1.png
+2025-02-03 14:34:35,680 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_461541ca3154fc72e9a2.png
+2025-02-03 14:34:35,681 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_9d1aad2e2e2ec4b49e91.png
+2025-02-03 14:34:35,681 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_86a7df4fd712bc3457d3.png
+2025-02-03 14:34:35,681 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_0673abf12144e0fe0031.png
+2025-02-03 14:34:35,681 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_3a061237bbcc8dcdbde0.png
+2025-02-03 14:34:35,682 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_ae5f7ee7a9c7622080b7.png
+2025-02-03 14:34:35,683 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_bf37e71791c19cb80040.png
+2025-02-03 14:34:35,689 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_6d8282e9e762ecc44609.png
+2025-02-03 14:34:35,689 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_8254d849a9091935fa28.png
+2025-02-03 14:34:35,689 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_5c8bf0215a4f1bb101ab.png
+2025-02-03 14:34:35,690 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_d5d6421b36868f22cf05.png
+2025-02-03 14:34:35,694 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media
+2025-02-03 14:34:35,694 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images
+2025-02-03 14:34:35,787 INFO    wandb-upload_20:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/47naa45v-media/images/Prediction_0_fe6394f72ed31341f022.png
+2025-02-03 14:34:36,015 INFO    wandb-upload_42:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/4pc8hmxl-media/images/Image_0_0673abf12144e0fe0031.png
+2025-02-03 14:34:36,208 INFO    wandb-upload_5:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/khg9x3fk-media/images/Target_0_53dfe02481297b597d70.png
+2025-02-03 14:34:36,254 INFO    wandb-upload_1:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/odhtvum0-media/images/Target_0_630934e0fec6c77b4579.png
+2025-02-03 14:34:36,492 INFO    wandb-upload_10:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/78rvd469-media/images/Target_0_68c0832e33653e4bb7e7.png
+2025-02-03 14:34:36,532 INFO    wandb-upload_6:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/a7b90nlp-media/images/Target_0_f79f4adc8a5d207ec173.png
+2025-02-03 14:34:36,556 INFO    wandb-upload_17:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/3qlbnk9g-media/images/Target_0_f3af47e9a752589fe56a.png
+2025-02-03 14:34:36,642 INFO    wandb-upload_7:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/sjuj8xjp-media/images/Target_0_431a0e59d9dbe517b9b1.png
+2025-02-03 14:34:36,647 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/output.log
+2025-02-03 14:34:36,697 INFO    wandb-upload_9:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/wnrh9fsj-media/images/Target_0_c7f4bac81bf49c4244d1.png
+2025-02-03 14:34:36,719 INFO    wandb-upload_19:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/0gtu7dd1-media/images/Target_0_10daa150c44b120629a2.png
+2025-02-03 14:34:36,744 INFO    wandb-upload_15:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/3mncfthx-media/images/Target_0_e19f163df15ba5383e63.png
+2025-02-03 14:34:36,932 INFO    wandb-upload_42:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/3hs0jsqu-media/images/Target_0_68c0832e33653e4bb7e7.png
+2025-02-03 14:34:36,942 INFO    wandb-upload_23:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/0nhmknq3-media/images/Prediction_0_079aeca8172486ac7983.png
+2025-02-03 14:34:36,998 INFO    wandb-upload_1:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/dtktjlgf-media/images/Target_0_c7f4bac81bf49c4244d1.png
+2025-02-03 14:34:37,009 INFO    wandb-upload_2:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/29dxsm50-media/images/Target_0_49e95d82a9cf0f11fbf1.png
+2025-02-03 14:34:37,034 INFO    wandb-upload_44:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/91loxbb8-media/images/Image_0_429f34f1e274b45c18eb.png
+2025-02-03 14:34:37,035 INFO    wandb-upload_12:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/xief8sky-media/images/Target_0_94d217f4d215f5f15d3f.png
+2025-02-03 14:34:37,100 INFO    wandb-upload_3:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/mpz3eomu-media/images/Target_0_7a69002b8029b7667490.png
+2025-02-03 14:34:37,124 INFO    wandb-upload_14:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ng6pgrb2-media/images/Target_0_461541ca3154fc72e9a2.png
+2025-02-03 14:34:37,151 INFO    wandb-upload_45:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/hdescizj-media/images/Image_0_872a0ae42f4e5a366178.png
+2025-02-03 14:34:37,170 INFO    wandb-upload_6:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/8rqomaae-media/images/Target_0_630934e0fec6c77b4579.png
+2025-02-03 14:34:37,199 INFO    wandb-upload_21:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/g8qseqrd-media/images/Prediction_0_bb86a75d35754f92ab41.png
+2025-02-03 14:34:37,202 INFO    wandb-upload_24:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/uf8m9avy-media/images/Prediction_0_51838703e1fb217cac13.png
+2025-02-03 14:34:37,240 INFO    wandb-upload_4:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/tkwfoh03-media/images/Target_0_048bccb132a7df073adc.png
+2025-02-03 14:34:37,265 INFO    wandb-upload_49:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/s2e19v3d-media/images/Image_0_8254d849a9091935fa28.png
+2025-02-03 14:34:37,273 INFO    wandb-upload_16:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/j5t6f491-media/images/Target_0_42ee6f7d1c0acb36c74e.png
+2025-02-03 14:34:37,293 INFO    wandb-upload_35:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/p7aldxzw-media/images/Prediction_0_e253c24873573e93afa4.png
+2025-02-03 14:34:37,318 INFO    wandb-upload_53:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/1nemsq0r-media/images/Image_0_3f83b032b26a63c57682.png
+2025-02-03 14:34:37,331 INFO    wandb-upload_22:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/dwvf4zwm-media/images/Prediction_0_3a061237bbcc8dcdbde0.png
+2025-02-03 14:34:37,333 INFO    wandb-upload_55:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/4nc7hor5-media/images/Image_0_34ae3e65b1bc40b4fef8.png
+2025-02-03 14:34:37,334 INFO    wandb-upload_59:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/cbh3ycuz-media/images/Target_0_90a48278210edb1a81df.png
+2025-02-03 14:34:37,353 INFO    wandb-upload_54:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/pvw8tcam-media/images/Image_0_86a7df4fd712bc3457d3.png
+2025-02-03 14:34:37,353 INFO    wandb-upload_7:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ev13ytv7-media/images/Target_0_f79f4adc8a5d207ec173.png
+2025-02-03 14:34:37,356 INFO    wandb-upload_18:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/qo7uxyot-media/images/Target_0_94f94482eeab795457dc.png
+2025-02-03 14:34:37,387 INFO    wandb-upload_58:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/fcyreq1y-media/images/Prediction_0_fe6394f72ed31341f022.png
+2025-02-03 14:34:37,396 INFO    wandb-upload_5:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/dorw7unz-media/images/Target_0_94d217f4d215f5f15d3f.png
+2025-02-03 14:34:37,407 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:37,443 INFO    wandb-upload_42:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/btpcphj5-media/images/Target_0_f3af47e9a752589fe56a.png
+2025-02-03 14:34:37,501 INFO    wandb-upload_13:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/qm3sfcwn-media/images/Target_0_e3dbb1f981861cfe519c.png
+2025-02-03 14:34:37,518 INFO    wandb-upload_56:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/litqrhrv-media/images/Image_0_04d3c97891d703163a7c.png
+2025-02-03 14:34:37,521 INFO    wandb-upload_47:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/um1riy7c-media/images/Image_0_566d832b1184a8885099.png
+2025-02-03 14:34:37,552 INFO    wandb-upload_27:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/lsfk5eap-media/images/Prediction_0_d0ad46a9e3434b37661e.png
+2025-02-03 14:34:37,563 INFO    wandb-upload_8:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ndmcihcd-media/images/Target_0_63a6ab951e8d92b15cf6.png
+2025-02-03 14:34:37,567 INFO    wandb-upload_23:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/0yueggbq-media/images/Image_0_872a0ae42f4e5a366178.png
+2025-02-03 14:34:37,572 INFO    wandb-upload_32:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/o8kyzxzy-media/images/Prediction_0_e440d700d3f488e57c48.png
+2025-02-03 14:34:37,585 INFO    wandb-upload_33:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/4n38piej-media/images/Prediction_0_8220bb9f87885cec5b55.png
+2025-02-03 14:34:37,586 INFO    wandb-upload_25:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ypljwjyg-media/images/Prediction_0_abb1a159df41d0336adb.png
+2025-02-03 14:34:37,588 INFO    wandb-upload_2:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/rpskufsj-media/images/Target_0_048bccb132a7df073adc.png
+2025-02-03 14:34:37,613 INFO    wandb-upload_3:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/m6utvhzu-media/images/Target_0_53dfe02481297b597d70.png
+2025-02-03 14:34:37,619 INFO    wandb-upload_7:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/5gw1n6xi-media/images/Target_0_10daa150c44b120629a2.png
+2025-02-03 14:34:37,619 INFO    wandb-upload_41:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/mb8ht2wz-media/images/Image_0_21b143d79b8c91c21cf4.png
+2025-02-03 14:34:37,622 INFO    wandb-upload_26:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/wcw7kspq-media/images/Prediction_0_3cc9e45a3f392a9e341a.png
+2025-02-03 14:34:37,629 INFO    wandb-upload_39:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/tn4ocfiw-media/images/Image_0_6d8282e9e762ecc44609.png
+2025-02-03 14:34:37,640 INFO    wandb-upload_9:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/crmz7zet-media/images/Image_0_429f34f1e274b45c18eb.png
+2025-02-03 14:34:37,649 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/config.yaml
+2025-02-03 14:34:37,649 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/output.log
+2025-02-03 14:34:37,652 INFO    wandb-upload_29:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/66opul9k-media/images/Prediction_0_9d1aad2e2e2ec4b49e91.png
+2025-02-03 14:34:37,653 INFO    wandb-upload_40:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ilaofel9-media/images/Image_0_1ea007c47e9ea9232673.png
+2025-02-03 14:34:37,655 INFO    wandb-upload_43:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/bfluqamn-media/images/Image_0_358211652e18624d5ac5.png
+2025-02-03 14:34:37,666 INFO    wandb-upload_52:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/m0rgl17v-media/images/Image_0_6f0fada2c21a3fb6db62.png
+2025-02-03 14:34:37,669 INFO    wandb-upload_20:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/a1dvnap9-media/images/Image_0_021d5fdde8b1e53c2494.png
+2025-02-03 14:34:37,669 INFO    wandb-upload_48:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/1cn996tl-media/images/Image_0_fd8babf778590155545a.png
+2025-02-03 14:34:37,671 INFO    wandb-upload_0:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/y8azy6i0-media/images/Prediction_0_0b7e12964a6cf6c2ab06.png
+2025-02-03 14:34:37,681 INFO    wandb-upload_30:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/fafaq5oz-media/images/Prediction_0_ae5f7ee7a9c7622080b7.png
+2025-02-03 14:34:37,683 INFO    wandb-upload_11:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/49r2an6y-media/images/Target_0_ed8063ccfbe6f74e29e2.png
+2025-02-03 14:34:37,698 INFO    wandb-upload_37:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/udzoxhvt-media/images/Prediction_0_429e0da37fba8b91668a.png
+2025-02-03 14:34:37,720 INFO    wandb-upload_46:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/azljbodb-media/images/Image_0_7b00afc314d13b1558ca.png
+2025-02-03 14:34:37,725 INFO    wandb-upload_36:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/etc18fds-media/images/Prediction_0_e3aa42b4eaf59206b8d5.png
+2025-02-03 14:34:37,730 INFO    wandb-upload_38:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/u5m76uyc-media/images/Prediction_0_5c8bf0215a4f1bb101ab.png
+2025-02-03 14:34:37,739 INFO    wandb-upload_51:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/uvpzd48z-media/images/Image_0_9bbcf5c5d23e8e8cfe6f.png
+2025-02-03 14:34:37,741 INFO    wandb-upload_31:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/8s5zitft-media/images/Prediction_0_bf37e71791c19cb80040.png
+2025-02-03 14:34:37,759 INFO    wandb-upload_57:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/b7ijybkl-media/images/Image_0_db72bd9fdaaf97302131.png
+2025-02-03 14:34:37,760 INFO    wandb-upload_50:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/lhedmncp-media/images/Image_0_d5d6421b36868f22cf05.png
+2025-02-03 14:34:37,799 INFO    wandb-upload_10:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/jf8duj4n-media/images/Target_0_42ee6f7d1c0acb36c74e.png
+2025-02-03 14:34:37,809 INFO    wandb-upload_15:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ze5z5e8e-media/images/Prediction_0_079aeca8172486ac7983.png
+2025-02-03 14:34:37,827 INFO    wandb-upload_24:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/if3k3196-media/images/Target_0_e19f163df15ba5383e63.png
+2025-02-03 14:34:37,843 INFO    wandb-upload_28:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/mvse6bft-media/images/Prediction_0_dd6c5aff71aff9bb9332.png
+2025-02-03 14:34:37,848 INFO    wandb-upload_34:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/nixoxjg2-media/images/Prediction_0_20939f9ec76060840556.png
+2025-02-03 14:34:37,879 INFO    wandb-upload_4:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/1ontvx36-media/images/Prediction_0_d0ad46a9e3434b37661e.png
+2025-02-03 14:34:37,885 INFO    wandb-upload_19:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/vd5sp2xs-media/images/Target_0_49e95d82a9cf0f11fbf1.png
+2025-02-03 14:34:37,900 INFO    wandb-upload_16:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/u1ixfjze-media/images/Target_0_431a0e59d9dbe517b9b1.png
+2025-02-03 14:34:37,900 INFO    wandb-upload_22:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/dsxpfpqm-media/images/Image_0_86a7df4fd712bc3457d3.png
+2025-02-03 14:34:37,910 INFO    wandb-upload_54:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/5vww3kjm-media/images/Prediction_0_3a061237bbcc8dcdbde0.png
+2025-02-03 14:34:37,913 INFO    wandb-upload_1:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/k5q0pk8l-media/images/Target_0_461541ca3154fc72e9a2.png
+2025-02-03 14:34:37,927 INFO    wandb-upload_59:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/4pwhc6lt-media/images/Image_0_0673abf12144e0fe0031.png
+2025-02-03 14:34:37,952 INFO    wandb-upload_58:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/e5jky4z9-media/images/Image_0_8254d849a9091935fa28.png
+2025-02-03 14:34:37,964 INFO    wandb-upload_18:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/bmxu5yyd-media/images/Image_0_6d8282e9e762ecc44609.png
+2025-02-03 14:34:37,973 INFO    wandb-upload_5:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/b4enu67l-media/images/Target_0_63a6ab951e8d92b15cf6.png
+2025-02-03 14:34:37,973 INFO    wandb-upload_6:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/up2fntbl-media/images/Target_0_7a69002b8029b7667490.png
+2025-02-03 14:34:37,978 INFO    wandb-upload_37:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/pl9z5qsj-media/images/Target_0_e3dbb1f981861cfe519c.png
+2025-02-03 14:34:37,985 INFO    wandb-upload_56:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ao0b0073-media/images/Image_0_1ea007c47e9ea9232673.png
+2025-02-03 14:34:37,992 INFO    wandb-upload_21:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/3kkkk4tr-media/images/Prediction_0_51838703e1fb217cac13.png
+2025-02-03 14:34:38,009 INFO    wandb-upload_51:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/c78jbh4c-media/images/Image_0_7b00afc314d13b1558ca.png
+2025-02-03 14:34:38,013 INFO    wandb-upload_27:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/5x79m7g2-media/images/Image_0_04d3c97891d703163a7c.png
+2025-02-03 14:34:38,025 INFO    wandb-upload_17:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/aoqgznin-media/images/Prediction_0_bb86a75d35754f92ab41.png
+2025-02-03 14:34:38,037 INFO    wandb-upload_23:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/1alrayg1-media/images/Image_0_34ae3e65b1bc40b4fef8.png
+2025-02-03 14:34:38,041 INFO    wandb-upload_2:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/e3c6t0xb-media/images/Prediction_0_e440d700d3f488e57c48.png
+2025-02-03 14:34:38,055 INFO    wandb-upload_49:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/y8kt22hz-media/images/Image_0_6f0fada2c21a3fb6db62.png
+2025-02-03 14:34:38,088 INFO    wandb-upload_41:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/hqcadfwa-media/images/Image_0_3f83b032b26a63c57682.png
+2025-02-03 14:34:38,094 INFO    wandb-upload_35:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/x49iz82r-media/images/Image_0_fd8babf778590155545a.png
+2025-02-03 14:34:38,097 INFO    wandb-upload_26:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/q9jn9qsp-media/images/Prediction_0_e253c24873573e93afa4.png
+2025-02-03 14:34:38,136 INFO    wandb-upload_39:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/lmarhd8t-media/images/Image_0_566d832b1184a8885099.png
+2025-02-03 14:34:38,146 INFO    wandb-upload_9:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/85hv4rhn-media/images/Prediction_0_dd6c5aff71aff9bb9332.png
+2025-02-03 14:34:38,151 INFO    wandb-upload_29:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/xy2gjw1k-media/images/Prediction_0_429e0da37fba8b91668a.png
+2025-02-03 14:34:38,163 INFO    wandb-upload_40:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/wivhuz2n-media/images/Target_0_94f94482eeab795457dc.png
+2025-02-03 14:34:38,200 INFO    wandb-upload_48:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/5cavjgsh-media/images/Image_0_21b143d79b8c91c21cf4.png
+2025-02-03 14:34:38,208 INFO    wandb-upload_14:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/39f1nmzp-media/images/Image_0_9bbcf5c5d23e8e8cfe6f.png
+2025-02-03 14:34:38,217 INFO    wandb-upload_42:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/wkxo4vjc-media/images/Prediction_0_abb1a159df41d0336adb.png
+2025-02-03 14:34:38,227 INFO    wandb-upload_11:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/9bfkz0w2-media/images/Prediction_0_0b7e12964a6cf6c2ab06.png
+2025-02-03 14:34:38,233 INFO    wandb-upload_20:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/m1gkk220-media/images/Prediction_0_8220bb9f87885cec5b55.png
+2025-02-03 14:34:38,237 INFO    wandb-upload_46:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/pk33vsoa-media/images/Prediction_0_3cc9e45a3f392a9e341a.png
+2025-02-03 14:34:38,266 INFO    wandb-upload_31:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/8wgjy9vn-media/images/Prediction_0_e3aa42b4eaf59206b8d5.png
+2025-02-03 14:34:38,268 INFO    wandb-upload_37:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/mu6e98el-media/images/Image_0_021d5fdde8b1e53c2494.png
+2025-02-03 14:34:38,270 INFO    wandb-upload_57:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/v96ojf6i-media/images/Prediction_0_ae5f7ee7a9c7622080b7.png
+2025-02-03 14:34:38,279 INFO    wandb-upload_21:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/qymqbwi4-media/images/Image_0_358211652e18624d5ac5.png
+2025-02-03 14:34:38,283 INFO    wandb-upload_10:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/cqb6h7vj-media/images/Prediction_0_bf37e71791c19cb80040.png
+2025-02-03 14:34:38,318 INFO    wandb-upload_50:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/44qmpbia-media/images/Prediction_0_9d1aad2e2e2ec4b49e91.png
+2025-02-03 14:34:38,318 INFO    wandb-upload_15:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/0imyo5k8-media/images/Prediction_0_5c8bf0215a4f1bb101ab.png
+2025-02-03 14:34:38,322 INFO    wandb-upload_3:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/femv8wgr-media/images/Image_0_d5d6421b36868f22cf05.png
+2025-02-03 14:34:38,324 INFO    wandb-upload_38:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/3nzqx6vs-media/images/Target_0_ed8063ccfbe6f74e29e2.png
+2025-02-03 14:34:38,330 INFO    wandb-upload_53:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/0t3pcmzb-media/images/Image_0_db72bd9fdaaf97302131.png
+2025-02-03 14:34:38,366 INFO    wandb-upload_7:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/fxtvogtd-media/images/Prediction_0_20939f9ec76060840556.png
+2025-02-03 14:34:41,979 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: stop_status
+2025-02-03 14:34:41,980 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: stop_status
+2025-02-03 14:34:41,983 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: internal_messages
+2025-02-03 14:34:43,064 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:48,066 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:53,066 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:56,744 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,746 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_94f94482eeab795457dc.png with policy now
+2025-02-03 14:34:56,746 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,747 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_a41fb8b51ed61314e5bf.png with policy now
+2025-02-03 14:34:56,747 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,747 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_66d041886ecd4de8fc25.png with policy now
+2025-02-03 14:34:56,748 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,748 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_941af51ad0f929a65f00.png with policy now
+2025-02-03 14:34:56,748 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,748 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_aab2305dfe1f6f284946.png with policy now
+2025-02-03 14:34:56,749 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,749 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_923c9fcbd2d970a558ef.png with policy now
+2025-02-03 14:34:56,749 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,749 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_3d2bc312300805b155fc.png with policy now
+2025-02-03 14:34:56,750 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,750 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_9544b079c65e735bf9b8.png with policy now
+2025-02-03 14:34:56,750 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,750 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_5bc59fd74ad14e660798.png with policy now
+2025-02-03 14:34:56,751 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,751 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_b6bd39acefa4544a5278.png with policy now
+2025-02-03 14:34:56,751 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,751 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_f385fdc8854a810e578b.png with policy now
+2025-02-03 14:34:56,752 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,752 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_0ccd23bac682f7308ad0.png with policy now
+2025-02-03 14:34:56,757 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,757 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_85e8edc28f210a3c8094.png with policy now
+2025-02-03 14:34:56,758 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,758 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_461541ca3154fc72e9a2.png with policy now
+2025-02-03 14:34:56,759 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,759 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_45d4e76906c3c0fb8c1b.png with policy now
+2025-02-03 14:34:56,759 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,759 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_02d7908e4927d1ec3443.png with policy now
+2025-02-03 14:34:56,760 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,760 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_a8a058bdcd56f28abe70.png with policy now
+2025-02-03 14:34:56,760 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,760 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_c1b26f5602a43e7d2605.png with policy now
+2025-02-03 14:34:56,764 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,765 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_1bcb8729432884724b15.png with policy now
+2025-02-03 14:34:56,765 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,765 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Target_1_16d8dddbc23d74719dcf.png with policy now
+2025-02-03 14:34:56,772 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,772 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_38d8f6f87da095f4a5c6.png with policy now
+2025-02-03 14:34:56,773 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,773 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_b6522bbca9dc090aa7ac.png with policy now
+2025-02-03 14:34:56,774 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,774 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_65413d8941f634020abd.png with policy now
+2025-02-03 14:34:56,777 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,778 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_818baf7ffb0a34c80d95.png with policy now
+2025-02-03 14:34:56,778 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,779 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_cd4bfd1312cf0605a733.png with policy now
+2025-02-03 14:34:56,779 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,780 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_da58de53a8d0339dcae1.png with policy now
+2025-02-03 14:34:56,780 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,784 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_e70edef8ff1515a84c89.png with policy now
+2025-02-03 14:34:56,786 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,786 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_9e582c5511e57f556581.png with policy now
+2025-02-03 14:34:56,787 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,787 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_daf8ad5f0d231ffbe3f3.png with policy now
+2025-02-03 14:34:56,788 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,788 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_b2378ae6ebb16a682eec.png with policy now
+2025-02-03 14:34:56,788 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,788 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_7c7c6bc4e96568441edb.png with policy now
+2025-02-03 14:34:56,789 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,789 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_727ef2f32167f5944e8c.png with policy now
+2025-02-03 14:34:56,792 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,792 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_ec3983e375e0418b3124.png with policy now
+2025-02-03 14:34:56,793 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,794 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_04cebc28262396e332cf.png with policy now
+2025-02-03 14:34:56,794 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,794 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_74f67bd01369810eaecc.png with policy now
+2025-02-03 14:34:56,795 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,795 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_f0c9c37f12a0e6444a30.png with policy now
+2025-02-03 14:34:56,796 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,796 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_edaded8bbbb0a4a149d3.png with policy now
+2025-02-03 14:34:56,796 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,796 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_bbe27e4aaca7fcab5889.png with policy now
+2025-02-03 14:34:56,797 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,797 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_f7ab33ce9e05171b87f3.png with policy now
+2025-02-03 14:34:56,797 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,797 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Prediction_1_cd4b5dfedfa4259e2698.png with policy now
+2025-02-03 14:34:56,828 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,830 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_04d3c97891d703163a7c.png with policy now
+2025-02-03 14:34:56,836 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,836 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_ccf29b15e07044a0dc94.png with policy now
+2025-02-03 14:34:56,838 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,838 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_449d63d18b9b03b98a10.png with policy now
+2025-02-03 14:34:56,841 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,843 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_818baf7ffb0a34c80d95.png with policy now
+2025-02-03 14:34:56,845 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,845 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_fa276506a9ea3dd422f5.png with policy now
+2025-02-03 14:34:56,849 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,849 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_30bf79d62623fce1fcf8.png with policy now
+2025-02-03 14:34:56,851 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,851 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_9e53aca9f1b6019862c0.png with policy now
+2025-02-03 14:34:56,852 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,856 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_bd4e26007b7a3fb9e1ae.png with policy now
+2025-02-03 14:34:56,857 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,857 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_78a6a525765f6d89d62c.png with policy now
+2025-02-03 14:34:56,858 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,858 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_73f12bf214ac04c8facc.png with policy now
+2025-02-03 14:34:56,859 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,868 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_14c0a4e72c4306899aef.png with policy now
+2025-02-03 14:34:56,873 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,876 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_d3c23bf1a2571c1058a3.png with policy now
+2025-02-03 14:34:56,881 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,882 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_a966d1919d6dd6d2ebbd.png with policy now
+2025-02-03 14:34:56,883 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: partial_history
+2025-02-03 14:34:56,883 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,885 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_6f0fada2c21a3fb6db62.png with policy now
+2025-02-03 14:34:56,885 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,885 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_6bf93e67c652d1ff441e.png with policy now
+2025-02-03 14:34:56,886 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,886 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_8c9cac6704e070c5c226.png with policy now
+2025-02-03 14:34:56,891 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,892 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_d960399123b1fba5c830.png with policy now
+2025-02-03 14:34:56,892 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,893 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_a72eb63f28cfeb060f67.png with policy now
+2025-02-03 14:34:56,894 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,894 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_c15822148339112f452b.png with policy now
+2025-02-03 14:34:56,895 DEBUG   SenderThread:1107284 [sender.py:send():382] send: files
+2025-02-03 14:34:56,895 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file media/images/Image_1_3c35bf74b97b4c5ae4f5.png with policy now
+2025-02-03 14:34:56,898 DEBUG   SenderThread:1107284 [sender.py:send():382] send: history
+2025-02-03 14:34:56,899 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: summary_record
+2025-02-03 14:34:56,905 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2025-02-03 14:34:56,972 INFO    wandb-upload_55:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/tclvrn72-media/images/Target_1_94f94482eeab795457dc.png
+2025-02-03 14:34:56,974 INFO    wandb-upload_22:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/xl020wbo-media/images/Target_1_941af51ad0f929a65f00.png
+2025-02-03 14:34:56,984 INFO    wandb-upload_44:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/7r9htci3-media/images/Target_1_a41fb8b51ed61314e5bf.png
+2025-02-03 14:34:57,015 INFO    wandb-upload_1:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/avq5y4o8-media/images/Target_1_923c9fcbd2d970a558ef.png
+2025-02-03 14:34:57,015 INFO    wandb-upload_54:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/o5cprkdr-media/images/Target_1_aab2305dfe1f6f284946.png
+2025-02-03 14:34:57,017 INFO    wandb-upload_12:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/4p98euq8-media/images/Target_1_66d041886ecd4de8fc25.png
+2025-02-03 14:34:57,024 INFO    wandb-upload_59:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/vrgdofg1-media/images/Target_1_3d2bc312300805b155fc.png
+2025-02-03 14:34:57,031 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: stop_status
+2025-02-03 14:34:57,032 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: internal_messages
+2025-02-03 14:34:57,033 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: stop_status
+2025-02-03 14:34:57,040 INFO    wandb-upload_58:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/6bm2s5kz-media/images/Target_1_9544b079c65e735bf9b8.png
+2025-02-03 14:34:57,043 INFO    wandb-upload_5:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/o6a82ls7-media/images/Target_1_b6bd39acefa4544a5278.png
+2025-02-03 14:34:57,048 INFO    wandb-upload_18:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ahwnc8si-media/images/Target_1_5bc59fd74ad14e660798.png
+2025-02-03 14:34:57,121 INFO    wandb-upload_23:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/beqj5kh0-media/images/Target_1_02d7908e4927d1ec3443.png
+2025-02-03 14:34:57,133 INFO    wandb-upload_24:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/tinx9wep-media/images/Target_1_a8a058bdcd56f28abe70.png
+2025-02-03 14:34:57,146 INFO    wandb-upload_28:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/4xyougwm-media/images/Target_1_c1b26f5602a43e7d2605.png
+2025-02-03 14:34:57,146 INFO    wandb-upload_6:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/6rx9aael-media/images/Target_1_f385fdc8854a810e578b.png
+2025-02-03 14:34:57,170 INFO    wandb-upload_9:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/812a8wnr-media/images/Prediction_1_38d8f6f87da095f4a5c6.png
+2025-02-03 14:34:57,204 INFO    wandb-upload_46:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/u7obowzb-media/images/Prediction_1_cd4bfd1312cf0605a733.png
+2025-02-03 14:34:57,206 INFO    wandb-upload_14:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/bbyjjvsq-media/images/Prediction_1_65413d8941f634020abd.png
+2025-02-03 14:34:57,212 INFO    wandb-upload_11:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/unxh3uep-media/images/Prediction_1_818baf7ffb0a34c80d95.png
+2025-02-03 14:34:57,227 INFO    wandb-upload_37:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/5vuda2g6-media/images/Prediction_1_da58de53a8d0339dcae1.png
+2025-02-03 14:34:57,246 INFO    wandb-upload_21:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/nlj95j95-media/images/Prediction_1_e70edef8ff1515a84c89.png
+2025-02-03 14:34:57,269 INFO    wandb-upload_50:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ark07se1-media/images/Prediction_1_9e582c5511e57f556581.png
+2025-02-03 14:34:57,275 INFO    wandb-upload_53:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/l08womnj-media/images/Prediction_1_b2378ae6ebb16a682eec.png
+2025-02-03 14:34:57,285 INFO    wandb-upload_45:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/4fbf04iz-media/images/Prediction_1_04cebc28262396e332cf.png
+2025-02-03 14:34:57,295 INFO    wandb-upload_16:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/tf6xw765-media/images/Prediction_1_727ef2f32167f5944e8c.png
+2025-02-03 14:34:57,304 INFO    wandb-upload_36:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/31xfjtoh-media/images/Prediction_1_f0c9c37f12a0e6444a30.png
+2025-02-03 14:34:57,357 INFO    wandb-upload_33:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/bspb4ebt-media/images/Prediction_1_bbe27e4aaca7fcab5889.png
+2025-02-03 14:34:57,361 INFO    wandb-upload_8:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/rmy0i8fb-media/images/Target_1_0ccd23bac682f7308ad0.png
+2025-02-03 14:34:57,372 INFO    wandb-upload_2:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/py3i14io-media/images/Prediction_1_f7ab33ce9e05171b87f3.png
+2025-02-03 14:34:57,380 INFO    wandb-upload_41:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/rwg2x8q7-media/images/Prediction_1_cd4b5dfedfa4259e2698.png
+2025-02-03 14:34:57,381 INFO    wandb-upload_48:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/f4sdghm2-media/images/Image_1_ccf29b15e07044a0dc94.png
+2025-02-03 14:34:57,389 INFO    wandb-upload_32:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/etmma4zo-media/images/Target_1_85e8edc28f210a3c8094.png
+2025-02-03 14:34:57,389 INFO    wandb-upload_56:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/t2fl4ny8-media/images/Prediction_1_edaded8bbbb0a4a149d3.png
+2025-02-03 14:34:57,402 INFO    wandb-upload_20:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/cumge82k-media/images/Image_1_449d63d18b9b03b98a10.png
+2025-02-03 14:34:57,431 INFO    wandb-upload_51:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/azen2n6x-media/images/Target_1_461541ca3154fc72e9a2.png
+2025-02-03 14:34:57,442 INFO    wandb-upload_22:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/3sww0hjj-media/images/Image_1_818baf7ffb0a34c80d95.png
+2025-02-03 14:34:57,449 INFO    wandb-upload_31:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/26nsw07l-media/images/Image_1_fa276506a9ea3dd422f5.png
+2025-02-03 14:34:57,458 INFO    wandb-upload_54:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/bjz48fmr-media/images/Image_1_30bf79d62623fce1fcf8.png
+2025-02-03 14:34:57,462 INFO    wandb-upload_59:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/3snnwnbr-media/images/Image_1_9e53aca9f1b6019862c0.png
+2025-02-03 14:34:57,474 INFO    wandb-upload_17:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/yyy235ph-media/images/Target_1_45d4e76906c3c0fb8c1b.png
+2025-02-03 14:34:57,477 INFO    wandb-upload_15:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/jflzntsf-media/images/Image_1_73f12bf214ac04c8facc.png
+2025-02-03 14:34:57,498 INFO    wandb-upload_34:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/z9bjifmg-media/images/Target_1_1bcb8729432884724b15.png
+2025-02-03 14:34:57,499 INFO    wandb-upload_23:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/8u3e0whc-media/images/Image_1_6bf93e67c652d1ff441e.png
+2025-02-03 14:34:57,511 INFO    wandb-upload_40:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/j9xo2zc9-media/images/Prediction_1_b6522bbca9dc090aa7ac.png
+2025-02-03 14:34:57,523 INFO    wandb-upload_49:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/oeiyb70d-media/images/Image_1_8c9cac6704e070c5c226.png
+2025-02-03 14:34:57,526 INFO    wandb-upload_27:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/09twxlne-media/images/Image_1_6f0fada2c21a3fb6db62.png
+2025-02-03 14:34:57,528 INFO    wandb-upload_6:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/iv9dk33s-media/images/Image_1_d960399123b1fba5c830.png
+2025-02-03 14:34:57,544 INFO    wandb-upload_9:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/yfxtbxul-media/images/Image_1_c15822148339112f452b.png
+2025-02-03 14:34:57,545 INFO    wandb-upload_26:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/hpcnmm3j-media/images/Target_1_16d8dddbc23d74719dcf.png
+2025-02-03 14:34:57,551 INFO    wandb-upload_46:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/7awc307o-media/images/Image_1_3c35bf74b97b4c5ae4f5.png
+2025-02-03 14:34:57,562 INFO    wandb-upload_29:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/81xmuzt9-media/images/Image_1_a72eb63f28cfeb060f67.png
+2025-02-03 14:34:57,580 INFO    wandb-upload_30:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/5wcr1giw-media/images/Prediction_1_74f67bd01369810eaecc.png
+2025-02-03 14:34:57,592 INFO    wandb-upload_4:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/uwy8yv75-media/images/Prediction_1_7c7c6bc4e96568441edb.png
+2025-02-03 14:34:57,612 INFO    wandb-upload_43:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/btvo5tg5-media/images/Prediction_1_ec3983e375e0418b3124.png
+2025-02-03 14:34:57,622 INFO    wandb-upload_3:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/o1njjm09-media/images/Prediction_1_daf8ad5f0d231ffbe3f3.png
+2025-02-03 14:34:57,678 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/wandb-summary.json
+2025-02-03 14:34:57,679 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_3d2bc312300805b155fc.png
+2025-02-03 14:34:57,679 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_a72eb63f28cfeb060f67.png
+2025-02-03 14:34:57,679 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_727ef2f32167f5944e8c.png
+2025-02-03 14:34:57,680 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_65413d8941f634020abd.png
+2025-02-03 14:34:57,680 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_7c7c6bc4e96568441edb.png
+2025-02-03 14:34:57,680 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_b6522bbca9dc090aa7ac.png
+2025-02-03 14:34:57,681 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_f385fdc8854a810e578b.png
+2025-02-03 14:34:57,681 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_78a6a525765f6d89d62c.png
+2025-02-03 14:34:57,681 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_9e53aca9f1b6019862c0.png
+2025-02-03 14:34:57,682 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_66d041886ecd4de8fc25.png
+2025-02-03 14:34:57,682 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_16d8dddbc23d74719dcf.png
+2025-02-03 14:34:57,682 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_ccf29b15e07044a0dc94.png
+2025-02-03 14:34:57,683 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_818baf7ffb0a34c80d95.png
+2025-02-03 14:34:57,683 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_bbe27e4aaca7fcab5889.png
+2025-02-03 14:34:57,687 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_85e8edc28f210a3c8094.png
+2025-02-03 14:34:57,687 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_1bcb8729432884724b15.png
+2025-02-03 14:34:57,688 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_a8a058bdcd56f28abe70.png
+2025-02-03 14:34:57,689 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_9e582c5511e57f556581.png
+2025-02-03 14:34:57,689 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_c15822148339112f452b.png
+2025-02-03 14:34:57,690 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_45d4e76906c3c0fb8c1b.png
+2025-02-03 14:34:57,690 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_04cebc28262396e332cf.png
+2025-02-03 14:34:57,690 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_edaded8bbbb0a4a149d3.png
+2025-02-03 14:34:57,691 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_bd4e26007b7a3fb9e1ae.png
+2025-02-03 14:34:57,691 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_f7ab33ce9e05171b87f3.png
+2025-02-03 14:34:57,691 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_9544b079c65e735bf9b8.png
+2025-02-03 14:34:57,692 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_941af51ad0f929a65f00.png
+2025-02-03 14:34:57,692 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_cd4bfd1312cf0605a733.png
+2025-02-03 14:34:57,692 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_fa276506a9ea3dd422f5.png
+2025-02-03 14:34:57,692 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_73f12bf214ac04c8facc.png
+2025-02-03 14:34:57,693 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_b6bd39acefa4544a5278.png
+2025-02-03 14:34:57,693 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_0ccd23bac682f7308ad0.png
+2025-02-03 14:34:57,694 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_38d8f6f87da095f4a5c6.png
+2025-02-03 14:34:57,697 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_d960399123b1fba5c830.png
+2025-02-03 14:34:57,697 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_461541ca3154fc72e9a2.png
+2025-02-03 14:34:57,698 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_449d63d18b9b03b98a10.png
+2025-02-03 14:34:57,699 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_30bf79d62623fce1fcf8.png
+2025-02-03 14:34:57,699 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_6f0fada2c21a3fb6db62.png
+2025-02-03 14:34:57,700 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_d3c23bf1a2571c1058a3.png
+2025-02-03 14:34:57,700 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_74f67bd01369810eaecc.png
+2025-02-03 14:34:57,700 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_818baf7ffb0a34c80d95.png
+2025-02-03 14:34:57,701 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_5bc59fd74ad14e660798.png
+2025-02-03 14:34:57,708 INFO    wandb-upload_39:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/l9n1qtjs-media/images/Image_1_04d3c97891d703163a7c.png
+2025-02-03 14:34:57,710 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_94f94482eeab795457dc.png
+2025-02-03 14:34:57,711 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_3c35bf74b97b4c5ae4f5.png
+2025-02-03 14:34:57,711 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_02d7908e4927d1ec3443.png
+2025-02-03 14:34:57,711 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_a966d1919d6dd6d2ebbd.png
+2025-02-03 14:34:57,712 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_da58de53a8d0339dcae1.png
+2025-02-03 14:34:57,712 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_923c9fcbd2d970a558ef.png
+2025-02-03 14:34:57,712 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_aab2305dfe1f6f284946.png
+2025-02-03 14:34:57,716 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_04d3c97891d703163a7c.png
+2025-02-03 14:34:57,717 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_c1b26f5602a43e7d2605.png
+2025-02-03 14:34:57,717 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_e70edef8ff1515a84c89.png
+2025-02-03 14:34:57,718 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_14c0a4e72c4306899aef.png
+2025-02-03 14:34:57,718 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_8c9cac6704e070c5c226.png
+2025-02-03 14:34:57,718 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_f0c9c37f12a0e6444a30.png
+2025-02-03 14:34:57,719 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_ec3983e375e0418b3124.png
+2025-02-03 14:34:57,719 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_daf8ad5f0d231ffbe3f3.png
+2025-02-03 14:34:57,719 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_cd4b5dfedfa4259e2698.png
+2025-02-03 14:34:57,720 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_b2378ae6ebb16a682eec.png
+2025-02-03 14:34:57,720 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_a41fb8b51ed61314e5bf.png
+2025-02-03 14:34:57,720 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_created():271] file/dir created: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_6bf93e67c652d1ff441e.png
+2025-02-03 14:34:57,721 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images
+2025-02-03 14:34:57,733 INFO    wandb-upload_10:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/9xy9i53q-media/images/Image_1_78a6a525765f6d89d62c.png
+2025-02-03 14:34:57,749 INFO    wandb-upload_52:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/u5xk2avo-media/images/Image_1_d3c23bf1a2571c1058a3.png
+2025-02-03 14:34:57,753 INFO    wandb-upload_58:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/jjutgmsg-media/images/Image_1_bd4e26007b7a3fb9e1ae.png
+2025-02-03 14:34:57,756 INFO    wandb-upload_13:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/2xf47ge3-media/images/Image_1_a966d1919d6dd6d2ebbd.png
+2025-02-03 14:34:57,758 INFO    wandb-upload_7:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/hop0h7rb-media/images/Image_1_14c0a4e72c4306899aef.png
+2025-02-03 14:34:57,958 INFO    wandb-upload_44:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/9v0twyf3-media/images/Image_1_a72eb63f28cfeb060f67.png
+2025-02-03 14:34:57,974 INFO    wandb-upload_21:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/1kr3jzfc-media/images/Prediction_1_727ef2f32167f5944e8c.png
+2025-02-03 14:34:57,980 INFO    wandb-upload_38:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/b9fy1sxl-media/images/Prediction_1_b6522bbca9dc090aa7ac.png
+2025-02-03 14:34:57,987 INFO    wandb-upload_11:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/6z8yp8e0-media/images/Target_1_3d2bc312300805b155fc.png
+2025-02-03 14:34:58,002 INFO    wandb-upload_19:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/orp1g2f7-media/images/Target_1_f385fdc8854a810e578b.png
+2025-02-03 14:34:58,002 INFO    wandb-upload_18:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/0nartc54-media/images/Prediction_1_7c7c6bc4e96568441edb.png
+2025-02-03 14:34:58,013 INFO    wandb-upload_57:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/fn7oe0p7-media/images/Prediction_1_65413d8941f634020abd.png
+2025-02-03 14:34:58,014 INFO    wandb-upload_45:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/wgirbc17-media/images/Image_1_78a6a525765f6d89d62c.png
+2025-02-03 14:34:58,049 INFO    wandb-upload_7:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/oqpy7iv4-media/images/Image_1_9e53aca9f1b6019862c0.png
+2025-02-03 14:34:58,056 INFO    wandb-upload_25:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/uujtdx4b-media/images/Target_1_66d041886ecd4de8fc25.png
+2025-02-03 14:34:58,100 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:34:58,149 INFO    wandb-upload_34:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/q53mpas3-media/images/Prediction_1_edaded8bbbb0a4a149d3.png
+2025-02-03 14:34:58,167 INFO    wandb-upload_49:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/onq18hoi-media/images/Image_1_bd4e26007b7a3fb9e1ae.png
+2025-02-03 14:34:58,189 INFO    wandb-upload_9:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/jvrm2kcn-media/images/Target_1_9544b079c65e735bf9b8.png
+2025-02-03 14:34:58,190 INFO    wandb-upload_6:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/65rgxmqq-media/images/Prediction_1_f7ab33ce9e05171b87f3.png
+2025-02-03 14:34:58,208 INFO    wandb-upload_29:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/sy977y6x-media/images/Target_1_941af51ad0f929a65f00.png
+2025-02-03 14:34:58,229 INFO    wandb-upload_4:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/rdl9qazu-media/images/Prediction_1_cd4bfd1312cf0605a733.png
+2025-02-03 14:34:58,229 INFO    wandb-upload_3:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/pzbmatm2-media/images/Image_1_fa276506a9ea3dd422f5.png
+2025-02-03 14:34:58,231 INFO    wandb-upload_1:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/yu54dye3-media/images/Image_1_73f12bf214ac04c8facc.png
+2025-02-03 14:34:58,246 INFO    wandb-upload_50:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ihy81jfb-media/images/Target_1_0ccd23bac682f7308ad0.png
+2025-02-03 14:34:58,247 INFO    wandb-upload_19:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/elhknix1-media/images/Prediction_1_38d8f6f87da095f4a5c6.png
+2025-02-03 14:34:58,336 INFO    wandb-upload_54:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/3z37kl6e-media/images/Target_1_5bc59fd74ad14e660798.png
+2025-02-03 14:34:58,396 INFO    wandb-upload_24:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/nch4vg98-media/images/Target_1_16d8dddbc23d74719dcf.png
+2025-02-03 14:34:58,400 INFO    wandb-upload_23:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/uwnq0cxf-media/images/Target_1_94f94482eeab795457dc.png
+2025-02-03 14:34:58,403 INFO    wandb-upload_38:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/lph8l9ce-media/images/Target_1_aab2305dfe1f6f284946.png
+2025-02-03 14:34:58,426 INFO    wandb-upload_11:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/vzcodqkr-media/images/Image_1_04d3c97891d703163a7c.png
+2025-02-03 14:34:58,432 INFO    wandb-upload_58:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/8p2pblh8-media/images/Image_1_14c0a4e72c4306899aef.png
+2025-02-03 14:34:58,432 INFO    wandb-upload_18:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/cghk6lke-media/images/Target_1_c1b26f5602a43e7d2605.png
+2025-02-03 14:34:58,433 INFO    wandb-upload_42:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/v79snoz8-media/images/Prediction_1_f0c9c37f12a0e6444a30.png
+2025-02-03 14:34:58,456 INFO    wandb-upload_29:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/slbeduwm-media/images/Prediction_1_ec3983e375e0418b3124.png
+2025-02-03 14:34:58,460 INFO    wandb-upload_7:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/g6smk222-media/images/Image_1_8c9cac6704e070c5c226.png
+2025-02-03 14:34:58,498 INFO    wandb-upload_22:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/xi8sd82z-media/images/Prediction_1_daf8ad5f0d231ffbe3f3.png
+2025-02-03 14:34:58,527 INFO    wandb-upload_55:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/lb3s3hov-media/images/Prediction_1_818baf7ffb0a34c80d95.png
+2025-02-03 14:34:58,599 INFO    wandb-upload_59:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/70qja6b2-media/images/Target_1_45d4e76906c3c0fb8c1b.png
+2025-02-03 14:34:58,603 INFO    wandb-upload_33:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/rtmy4o2c-media/images/Prediction_1_bbe27e4aaca7fcab5889.png
+2025-02-03 14:34:58,608 INFO    wandb-upload_48:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/k35fsa7q-media/images/Target_1_1bcb8729432884724b15.png
+2025-02-03 14:34:58,610 INFO    wandb-upload_56:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/dxkxwqup-media/images/Target_1_a8a058bdcd56f28abe70.png
+2025-02-03 14:34:58,650 INFO    wandb-upload_35:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/z7l9zz8p-media/images/Image_1_ccf29b15e07044a0dc94.png
+2025-02-03 14:34:58,700 INFO    wandb-upload_31:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/tyiwpdof-media/images/Image_1_c15822148339112f452b.png
+2025-02-03 14:34:58,716 INFO    wandb-upload_2:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/izy4izze-media/images/Target_1_85e8edc28f210a3c8094.png
+2025-02-03 14:34:58,757 INFO    wandb-upload_51:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/pb7bs24h-media/images/Prediction_1_9e582c5511e57f556581.png
+2025-02-03 14:34:58,788 INFO    wandb-upload_15:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/wnq7b4os-media/images/Prediction_1_04cebc28262396e332cf.png
+2025-02-03 14:34:58,855 INFO    wandb-upload_0:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/wxb8qx0j-media/images/Image_1_d960399123b1fba5c830.png
+2025-02-03 14:34:58,888 INFO    wandb-upload_52:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/atraz98u-media/images/Target_1_461541ca3154fc72e9a2.png
+2025-02-03 14:34:58,943 INFO    wandb-upload_20:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/vfcb1hx6-media/images/Image_1_818baf7ffb0a34c80d95.png
+2025-02-03 14:34:58,946 INFO    wandb-upload_25:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/owuron49-media/images/Image_1_30bf79d62623fce1fcf8.png
+2025-02-03 14:34:58,971 INFO    wandb-upload_46:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ocazvoam-media/images/Target_1_02d7908e4927d1ec3443.png
+2025-02-03 14:34:58,975 INFO    wandb-upload_28:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/oy6mmwt7-media/images/Image_1_6f0fada2c21a3fb6db62.png
+2025-02-03 14:34:58,984 INFO    wandb-upload_39:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ypf8hmb9-media/images/Target_1_b6bd39acefa4544a5278.png
+2025-02-03 14:34:58,999 INFO    wandb-upload_37:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/m980hcv8-media/images/Prediction_1_da58de53a8d0339dcae1.png
+2025-02-03 14:34:59,004 INFO    wandb-upload_30:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/wvbagre9-media/images/Prediction_1_b2378ae6ebb16a682eec.png
+2025-02-03 14:34:59,008 INFO    wandb-upload_41:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/ae2apvsz-media/images/Prediction_1_74f67bd01369810eaecc.png
+2025-02-03 14:34:59,011 INFO    wandb-upload_21:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/s10k3015-media/images/Target_1_923c9fcbd2d970a558ef.png
+2025-02-03 14:34:59,015 INFO    wandb-upload_43:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/u3cg9hea-media/images/Image_1_a966d1919d6dd6d2ebbd.png
+2025-02-03 14:34:59,019 INFO    wandb-upload_27:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/wzgj0c8t-media/images/Image_1_3c35bf74b97b4c5ae4f5.png
+2025-02-03 14:34:59,020 INFO    wandb-upload_13:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/tegeurw1-media/images/Image_1_449d63d18b9b03b98a10.png
+2025-02-03 14:34:59,021 INFO    wandb-upload_45:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/stn15jqs-media/images/Prediction_1_e70edef8ff1515a84c89.png
+2025-02-03 14:34:59,024 INFO    wandb-upload_14:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/aibbd853-media/images/Image_1_d3c23bf1a2571c1058a3.png
+2025-02-03 14:34:59,032 INFO    wandb-upload_53:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/as4immea-media/images/Image_1_6bf93e67c652d1ff441e.png
+2025-02-03 14:34:59,036 INFO    wandb-upload_12:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/e8pck9u2-media/images/Target_1_a41fb8b51ed61314e5bf.png
+2025-02-03 14:34:59,044 INFO    wandb-upload_40:1107284 [upload_job.py:push():131] Uploaded file /tmp/tmpdagsyb91wandb/2s63nlzy-media/images/Prediction_1_cd4b5dfedfa4259e2698.png
+2025-02-03 14:35:00,683 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/output.log
+2025-02-03 14:35:03,101 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:35:05,623 DEBUG   SystemMonitor:1107284 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2025-02-03 14:35:05,627 DEBUG   SenderThread:1107284 [sender.py:send():382] send: stats
+2025-02-03 14:35:08,630 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:35:11,807 DEBUG   SenderThread:1107284 [sender.py:send():382] send: exit
+2025-02-03 14:35:11,808 INFO    SenderThread:1107284 [sender.py:send_exit():589] handling exit code: 255
+2025-02-03 14:35:11,808 INFO    SenderThread:1107284 [sender.py:send_exit():591] handling runtime: 66
+2025-02-03 14:35:11,811 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2025-02-03 14:35:11,812 INFO    SenderThread:1107284 [sender.py:send_exit():597] send defer
+2025-02-03 14:35:11,812 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:11,812 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 0
+2025-02-03 14:35:11,812 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:11,813 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 0
+2025-02-03 14:35:11,813 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 1
+2025-02-03 14:35:11,813 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:11,813 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 1
+2025-02-03 14:35:11,813 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:11,813 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 1
+2025-02-03 14:35:11,813 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 2
+2025-02-03 14:35:11,813 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:11,813 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 2
+2025-02-03 14:35:11,813 INFO    HandlerThread:1107284 [system_monitor.py:finish():203] Stopping system monitor
+2025-02-03 14:35:11,814 DEBUG   SystemMonitor:1107284 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2025-02-03 14:35:11,815 INFO    HandlerThread:1107284 [interfaces.py:finish():202] Joined cpu monitor
+2025-02-03 14:35:11,815 DEBUG   SystemMonitor:1107284 [system_monitor.py:_start():183] Publishing last batch of metrics
+2025-02-03 14:35:11,816 INFO    HandlerThread:1107284 [interfaces.py:finish():202] Joined disk monitor
+2025-02-03 14:35:11,975 INFO    HandlerThread:1107284 [interfaces.py:finish():202] Joined gpu monitor
+2025-02-03 14:35:11,976 INFO    HandlerThread:1107284 [interfaces.py:finish():202] Joined memory monitor
+2025-02-03 14:35:11,976 INFO    HandlerThread:1107284 [interfaces.py:finish():202] Joined network monitor
+2025-02-03 14:35:11,977 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:11,977 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 2
+2025-02-03 14:35:11,977 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 3
+2025-02-03 14:35:11,978 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:11,978 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 3
+2025-02-03 14:35:11,979 DEBUG   SenderThread:1107284 [sender.py:send():382] send: stats
+2025-02-03 14:35:11,981 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:11,981 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 3
+2025-02-03 14:35:11,981 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 4
+2025-02-03 14:35:11,981 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:11,981 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 4
+2025-02-03 14:35:11,982 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:11,982 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 4
+2025-02-03 14:35:11,982 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 5
+2025-02-03 14:35:11,982 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:11,982 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 5
+2025-02-03 14:35:11,983 DEBUG   SenderThread:1107284 [sender.py:send():382] send: summary
+2025-02-03 14:35:11,983 INFO    SenderThread:1107284 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2025-02-03 14:35:11,984 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:11,984 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 5
+2025-02-03 14:35:11,984 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 6
+2025-02-03 14:35:11,984 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:11,984 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 6
+2025-02-03 14:35:11,984 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:11,984 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 6
+2025-02-03 14:35:11,985 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 7
+2025-02-03 14:35:11,985 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: status_report
+2025-02-03 14:35:11,985 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:11,985 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 7
+2025-02-03 14:35:11,985 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:11,985 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 7
+2025-02-03 14:35:12,697 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/wandb-summary.json
+2025-02-03 14:35:12,808 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-03 14:35:14,700 INFO    Thread-13 :1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/output.log
+2025-02-03 14:35:14,757 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 8
+2025-02-03 14:35:14,757 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: poll_exit
+2025-02-03 14:35:14,758 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:14,758 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 8
+2025-02-03 14:35:14,759 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:14,760 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 8
+2025-02-03 14:35:14,760 INFO    SenderThread:1107284 [job_builder.py:build():296] Attempting to build job artifact
+2025-02-03 14:35:14,761 INFO    SenderThread:1107284 [job_builder.py:_get_source_type():437] no source found
+2025-02-03 14:35:14,761 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 9
+2025-02-03 14:35:14,761 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:14,761 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 9
+2025-02-03 14:35:14,762 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:14,762 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 9
+2025-02-03 14:35:14,762 INFO    SenderThread:1107284 [dir_watcher.py:finish():358] shutting down directory watcher
+2025-02-03 14:35:14,809 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-03 14:35:15,704 INFO    SenderThread:1107284 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/output.log
+2025-02-03 14:35:15,705 INFO    SenderThread:1107284 [dir_watcher.py:finish():388] scan: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files
+2025-02-03 14:35:15,705 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/output.log output.log
+2025-02-03 14:35:15,705 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/requirements.txt requirements.txt
+2025-02-03 14:35:15,710 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/wandb-metadata.json wandb-metadata.json
+2025-02-03 14:35:15,710 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/wandb-summary.json wandb-summary.json
+2025-02-03 14:35:15,711 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/conda-environment.yaml conda-environment.yaml
+2025-02-03 14:35:15,712 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/config.yaml config.yaml
+2025-02-03 14:35:15,731 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_d960399123b1fba5c830.png media/images/Image_1_d960399123b1fba5c830.png
+2025-02-03 14:35:15,731 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_f3af47e9a752589fe56a.png media/images/Target_0_f3af47e9a752589fe56a.png
+2025-02-03 14:35:15,731 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_fe6394f72ed31341f022.png media/images/Prediction_0_fe6394f72ed31341f022.png
+2025-02-03 14:35:15,731 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_449d63d18b9b03b98a10.png media/images/Image_1_449d63d18b9b03b98a10.png
+2025-02-03 14:35:15,731 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_04cebc28262396e332cf.png media/images/Prediction_1_04cebc28262396e332cf.png
+2025-02-03 14:35:15,732 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_9d1aad2e2e2ec4b49e91.png media/images/Prediction_0_9d1aad2e2e2ec4b49e91.png
+2025-02-03 14:35:15,732 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_fd8babf778590155545a.png media/images/Image_0_fd8babf778590155545a.png
+2025-02-03 14:35:15,732 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_c15822148339112f452b.png media/images/Image_1_c15822148339112f452b.png
+2025-02-03 14:35:15,732 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_51838703e1fb217cac13.png media/images/Prediction_0_51838703e1fb217cac13.png
+2025-02-03 14:35:15,732 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_30bf79d62623fce1fcf8.png media/images/Image_1_30bf79d62623fce1fcf8.png
+2025-02-03 14:35:15,732 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_38d8f6f87da095f4a5c6.png media/images/Prediction_1_38d8f6f87da095f4a5c6.png
+2025-02-03 14:35:15,732 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_63a6ab951e8d92b15cf6.png media/images/Target_0_63a6ab951e8d92b15cf6.png
+2025-02-03 14:35:15,732 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_f0c9c37f12a0e6444a30.png media/images/Prediction_1_f0c9c37f12a0e6444a30.png
+2025-02-03 14:35:15,733 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_10daa150c44b120629a2.png media/images/Target_0_10daa150c44b120629a2.png
+2025-02-03 14:35:15,733 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_bb86a75d35754f92ab41.png media/images/Prediction_0_bb86a75d35754f92ab41.png
+2025-02-03 14:35:15,733 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_0673abf12144e0fe0031.png media/images/Image_0_0673abf12144e0fe0031.png
+2025-02-03 14:35:15,733 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_cd4bfd1312cf0605a733.png media/images/Prediction_1_cd4bfd1312cf0605a733.png
+2025-02-03 14:35:15,733 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_461541ca3154fc72e9a2.png media/images/Target_0_461541ca3154fc72e9a2.png
+2025-02-03 14:35:15,733 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_edaded8bbbb0a4a149d3.png media/images/Prediction_1_edaded8bbbb0a4a149d3.png
+2025-02-03 14:35:15,733 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_16d8dddbc23d74719dcf.png media/images/Target_1_16d8dddbc23d74719dcf.png
+2025-02-03 14:35:15,733 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_e440d700d3f488e57c48.png media/images/Prediction_0_e440d700d3f488e57c48.png
+2025-02-03 14:35:15,734 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_630934e0fec6c77b4579.png media/images/Target_0_630934e0fec6c77b4579.png
+2025-02-03 14:35:15,734 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_49e95d82a9cf0f11fbf1.png media/images/Target_0_49e95d82a9cf0f11fbf1.png
+2025-02-03 14:35:15,734 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_daf8ad5f0d231ffbe3f3.png media/images/Prediction_1_daf8ad5f0d231ffbe3f3.png
+2025-02-03 14:35:15,734 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_90a48278210edb1a81df.png media/images/Target_0_90a48278210edb1a81df.png
+2025-02-03 14:35:15,734 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_d0ad46a9e3434b37661e.png media/images/Prediction_0_d0ad46a9e3434b37661e.png
+2025-02-03 14:35:15,734 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_a41fb8b51ed61314e5bf.png media/images/Target_1_a41fb8b51ed61314e5bf.png
+2025-02-03 14:35:15,734 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_429e0da37fba8b91668a.png media/images/Prediction_0_429e0da37fba8b91668a.png
+2025-02-03 14:35:15,734 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_6d8282e9e762ecc44609.png media/images/Image_0_6d8282e9e762ecc44609.png
+2025-02-03 14:35:15,735 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_e3dbb1f981861cfe519c.png media/images/Target_0_e3dbb1f981861cfe519c.png
+2025-02-03 14:35:15,735 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_04d3c97891d703163a7c.png media/images/Image_0_04d3c97891d703163a7c.png
+2025-02-03 14:35:15,735 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_3c35bf74b97b4c5ae4f5.png media/images/Image_1_3c35bf74b97b4c5ae4f5.png
+2025-02-03 14:35:15,735 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_21b143d79b8c91c21cf4.png media/images/Image_0_21b143d79b8c91c21cf4.png
+2025-02-03 14:35:15,735 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_0ccd23bac682f7308ad0.png media/images/Target_1_0ccd23bac682f7308ad0.png
+2025-02-03 14:35:15,735 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_ed8063ccfbe6f74e29e2.png media/images/Target_0_ed8063ccfbe6f74e29e2.png
+2025-02-03 14:35:15,735 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_079aeca8172486ac7983.png media/images/Prediction_0_079aeca8172486ac7983.png
+2025-02-03 14:35:15,735 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_818baf7ffb0a34c80d95.png media/images/Image_1_818baf7ffb0a34c80d95.png
+2025-02-03 14:35:15,735 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_14c0a4e72c4306899aef.png media/images/Image_1_14c0a4e72c4306899aef.png
+2025-02-03 14:35:15,736 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_431a0e59d9dbe517b9b1.png media/images/Target_0_431a0e59d9dbe517b9b1.png
+2025-02-03 14:35:15,736 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_a966d1919d6dd6d2ebbd.png media/images/Image_1_a966d1919d6dd6d2ebbd.png
+2025-02-03 14:35:15,736 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_a8a058bdcd56f28abe70.png media/images/Target_1_a8a058bdcd56f28abe70.png
+2025-02-03 14:35:15,736 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_566d832b1184a8885099.png media/images/Image_0_566d832b1184a8885099.png
+2025-02-03 14:35:15,736 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_727ef2f32167f5944e8c.png media/images/Prediction_1_727ef2f32167f5944e8c.png
+2025-02-03 14:35:15,736 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_429f34f1e274b45c18eb.png media/images/Image_0_429f34f1e274b45c18eb.png
+2025-02-03 14:35:15,736 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_358211652e18624d5ac5.png media/images/Image_0_358211652e18624d5ac5.png
+2025-02-03 14:35:15,736 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_872a0ae42f4e5a366178.png media/images/Image_0_872a0ae42f4e5a366178.png
+2025-02-03 14:35:15,737 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_d3c23bf1a2571c1058a3.png media/images/Image_1_d3c23bf1a2571c1058a3.png
+2025-02-03 14:35:15,737 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_78a6a525765f6d89d62c.png media/images/Image_1_78a6a525765f6d89d62c.png
+2025-02-03 14:35:15,737 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_6f0fada2c21a3fb6db62.png media/images/Image_1_6f0fada2c21a3fb6db62.png
+2025-02-03 14:35:15,737 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_e253c24873573e93afa4.png media/images/Prediction_0_e253c24873573e93afa4.png
+2025-02-03 14:35:15,737 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_1bcb8729432884724b15.png media/images/Target_1_1bcb8729432884724b15.png
+2025-02-03 14:35:15,737 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_941af51ad0f929a65f00.png media/images/Target_1_941af51ad0f929a65f00.png
+2025-02-03 14:35:15,737 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_45d4e76906c3c0fb8c1b.png media/images/Target_1_45d4e76906c3c0fb8c1b.png
+2025-02-03 14:35:15,737 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_5bc59fd74ad14e660798.png media/images/Target_1_5bc59fd74ad14e660798.png
+2025-02-03 14:35:15,737 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_e3aa42b4eaf59206b8d5.png media/images/Prediction_0_e3aa42b4eaf59206b8d5.png
+2025-02-03 14:35:15,738 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_fa276506a9ea3dd422f5.png media/images/Image_1_fa276506a9ea3dd422f5.png
+2025-02-03 14:35:15,738 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_9e53aca9f1b6019862c0.png media/images/Image_1_9e53aca9f1b6019862c0.png
+2025-02-03 14:35:15,738 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_3cc9e45a3f392a9e341a.png media/images/Prediction_0_3cc9e45a3f392a9e341a.png
+2025-02-03 14:35:15,738 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_c1b26f5602a43e7d2605.png media/images/Target_1_c1b26f5602a43e7d2605.png
+2025-02-03 14:35:15,738 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_0b7e12964a6cf6c2ab06.png media/images/Prediction_0_0b7e12964a6cf6c2ab06.png
+2025-02-03 14:35:15,738 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_7a69002b8029b7667490.png media/images/Target_0_7a69002b8029b7667490.png
+2025-02-03 14:35:15,738 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_d5d6421b36868f22cf05.png media/images/Image_0_d5d6421b36868f22cf05.png
+2025-02-03 14:35:15,738 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_94d217f4d215f5f15d3f.png media/images/Target_0_94d217f4d215f5f15d3f.png
+2025-02-03 14:35:15,739 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_aab2305dfe1f6f284946.png media/images/Target_1_aab2305dfe1f6f284946.png
+2025-02-03 14:35:15,739 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_73f12bf214ac04c8facc.png media/images/Image_1_73f12bf214ac04c8facc.png
+2025-02-03 14:35:15,739 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_b6bd39acefa4544a5278.png media/images/Target_1_b6bd39acefa4544a5278.png
+2025-02-03 14:35:15,739 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_04d3c97891d703163a7c.png media/images/Image_1_04d3c97891d703163a7c.png
+2025-02-03 14:35:15,739 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_b6522bbca9dc090aa7ac.png media/images/Prediction_1_b6522bbca9dc090aa7ac.png
+2025-02-03 14:35:15,739 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_f79f4adc8a5d207ec173.png media/images/Target_0_f79f4adc8a5d207ec173.png
+2025-02-03 14:35:15,739 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_66d041886ecd4de8fc25.png media/images/Target_1_66d041886ecd4de8fc25.png
+2025-02-03 14:35:15,739 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_ccf29b15e07044a0dc94.png media/images/Image_1_ccf29b15e07044a0dc94.png
+2025-02-03 14:35:15,740 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_3a061237bbcc8dcdbde0.png media/images/Prediction_0_3a061237bbcc8dcdbde0.png
+2025-02-03 14:35:15,740 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_20939f9ec76060840556.png media/images/Prediction_0_20939f9ec76060840556.png
+2025-02-03 14:35:15,740 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_85e8edc28f210a3c8094.png media/images/Target_1_85e8edc28f210a3c8094.png
+2025-02-03 14:35:15,740 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_abb1a159df41d0336adb.png media/images/Prediction_0_abb1a159df41d0336adb.png
+2025-02-03 14:35:15,740 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_1ea007c47e9ea9232673.png media/images/Image_0_1ea007c47e9ea9232673.png
+2025-02-03 14:35:15,740 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_8c9cac6704e070c5c226.png media/images/Image_1_8c9cac6704e070c5c226.png
+2025-02-03 14:35:15,740 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_b2378ae6ebb16a682eec.png media/images/Prediction_1_b2378ae6ebb16a682eec.png
+2025-02-03 14:35:15,740 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_7c7c6bc4e96568441edb.png media/images/Prediction_1_7c7c6bc4e96568441edb.png
+2025-02-03 14:35:15,740 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_94f94482eeab795457dc.png media/images/Target_1_94f94482eeab795457dc.png
+2025-02-03 14:35:15,741 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_461541ca3154fc72e9a2.png media/images/Target_1_461541ca3154fc72e9a2.png
+2025-02-03 14:35:15,741 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_048bccb132a7df073adc.png media/images/Target_0_048bccb132a7df073adc.png
+2025-02-03 14:35:15,741 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_94f94482eeab795457dc.png media/images/Target_0_94f94482eeab795457dc.png
+2025-02-03 14:35:15,741 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_5c8bf0215a4f1bb101ab.png media/images/Prediction_0_5c8bf0215a4f1bb101ab.png
+2025-02-03 14:35:15,741 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_53dfe02481297b597d70.png media/images/Target_0_53dfe02481297b597d70.png
+2025-02-03 14:35:15,741 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_ec3983e375e0418b3124.png media/images/Prediction_1_ec3983e375e0418b3124.png
+2025-02-03 14:35:15,741 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_6bf93e67c652d1ff441e.png media/images/Image_1_6bf93e67c652d1ff441e.png
+2025-02-03 14:35:15,741 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_021d5fdde8b1e53c2494.png media/images/Image_0_021d5fdde8b1e53c2494.png
+2025-02-03 14:35:15,742 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_923c9fcbd2d970a558ef.png media/images/Target_1_923c9fcbd2d970a558ef.png
+2025-02-03 14:35:15,742 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_f385fdc8854a810e578b.png media/images/Target_1_f385fdc8854a810e578b.png
+2025-02-03 14:35:15,742 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_e70edef8ff1515a84c89.png media/images/Prediction_1_e70edef8ff1515a84c89.png
+2025-02-03 14:35:15,742 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_9544b079c65e735bf9b8.png media/images/Target_1_9544b079c65e735bf9b8.png
+2025-02-03 14:35:15,742 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_cd4b5dfedfa4259e2698.png media/images/Prediction_1_cd4b5dfedfa4259e2698.png
+2025-02-03 14:35:15,742 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_bf37e71791c19cb80040.png media/images/Prediction_0_bf37e71791c19cb80040.png
+2025-02-03 14:35:15,742 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_bd4e26007b7a3fb9e1ae.png media/images/Image_1_bd4e26007b7a3fb9e1ae.png
+2025-02-03 14:35:15,742 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_68c0832e33653e4bb7e7.png media/images/Target_0_68c0832e33653e4bb7e7.png
+2025-02-03 14:35:15,742 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_f7ab33ce9e05171b87f3.png media/images/Prediction_1_f7ab33ce9e05171b87f3.png
+2025-02-03 14:35:15,743 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_3f83b032b26a63c57682.png media/images/Image_0_3f83b032b26a63c57682.png
+2025-02-03 14:35:15,743 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_1_a72eb63f28cfeb060f67.png media/images/Image_1_a72eb63f28cfeb060f67.png
+2025-02-03 14:35:15,743 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_74f67bd01369810eaecc.png media/images/Prediction_1_74f67bd01369810eaecc.png
+2025-02-03 14:35:15,743 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_8220bb9f87885cec5b55.png media/images/Prediction_0_8220bb9f87885cec5b55.png
+2025-02-03 14:35:15,743 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_dd6c5aff71aff9bb9332.png media/images/Prediction_0_dd6c5aff71aff9bb9332.png
+2025-02-03 14:35:15,743 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_65413d8941f634020abd.png media/images/Prediction_1_65413d8941f634020abd.png
+2025-02-03 14:35:15,743 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_9bbcf5c5d23e8e8cfe6f.png media/images/Image_0_9bbcf5c5d23e8e8cfe6f.png
+2025-02-03 14:35:15,743 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_0_ae5f7ee7a9c7622080b7.png media/images/Prediction_0_ae5f7ee7a9c7622080b7.png
+2025-02-03 14:35:15,743 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_7b00afc314d13b1558ca.png media/images/Image_0_7b00afc314d13b1558ca.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_34ae3e65b1bc40b4fef8.png media/images/Image_0_34ae3e65b1bc40b4fef8.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_c7f4bac81bf49c4244d1.png media/images/Target_0_c7f4bac81bf49c4244d1.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_6f0fada2c21a3fb6db62.png media/images/Image_0_6f0fada2c21a3fb6db62.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_bbe27e4aaca7fcab5889.png media/images/Prediction_1_bbe27e4aaca7fcab5889.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_8254d849a9091935fa28.png media/images/Image_0_8254d849a9091935fa28.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_42ee6f7d1c0acb36c74e.png media/images/Target_0_42ee6f7d1c0acb36c74e.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_818baf7ffb0a34c80d95.png media/images/Prediction_1_818baf7ffb0a34c80d95.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_02d7908e4927d1ec3443.png media/images/Target_1_02d7908e4927d1ec3443.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_0_e19f163df15ba5383e63.png media/images/Target_0_e19f163df15ba5383e63.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_86a7df4fd712bc3457d3.png media/images/Image_0_86a7df4fd712bc3457d3.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Image_0_db72bd9fdaaf97302131.png media/images/Image_0_db72bd9fdaaf97302131.png
+2025-02-03 14:35:15,744 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_9e582c5511e57f556581.png media/images/Prediction_1_9e582c5511e57f556581.png
+2025-02-03 14:35:15,745 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Target_1_3d2bc312300805b155fc.png media/images/Target_1_3d2bc312300805b155fc.png
+2025-02-03 14:35:15,745 INFO    SenderThread:1107284 [dir_watcher.py:finish():402] scan save: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/media/images/Prediction_1_da58de53a8d0339dcae1.png media/images/Prediction_1_da58de53a8d0339dcae1.png
+2025-02-03 14:35:15,745 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 10
+2025-02-03 14:35:15,745 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: poll_exit
+2025-02-03 14:35:15,746 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:15,746 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 10
+2025-02-03 14:35:15,747 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:15,747 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 10
+2025-02-03 14:35:15,747 INFO    SenderThread:1107284 [file_pusher.py:finish():175] shutting down file pusher
+2025-02-03 14:35:15,810 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-03 14:35:15,811 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: poll_exit
+2025-02-03 14:35:15,889 INFO    wandb-upload_10:1107284 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/output.log
+2025-02-03 14:35:15,909 INFO    wandb-upload_57:1107284 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/requirements.txt
+2025-02-03 14:35:15,910 INFO    wandb-upload_16:1107284 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/config.yaml
+2025-02-03 14:35:15,924 INFO    wandb-upload_47:1107284 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/wandb-summary.json
+2025-02-03 14:35:15,926 INFO    wandb-upload_6:1107284 [upload_job.py:push():131] Uploaded file /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/files/conda-environment.yaml
+2025-02-03 14:35:16,127 INFO    Thread-12 (_thread_body):1107284 [sender.py:transition_state():617] send defer: 11
+2025-02-03 14:35:16,129 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:16,129 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 11
+2025-02-03 14:35:16,131 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:16,131 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 11
+2025-02-03 14:35:16,132 INFO    SenderThread:1107284 [file_pusher.py:join():181] waiting for file pusher
+2025-02-03 14:35:16,132 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 12
+2025-02-03 14:35:16,132 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:16,132 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 12
+2025-02-03 14:35:16,133 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:16,133 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 12
+2025-02-03 14:35:16,133 INFO    SenderThread:1107284 [file_stream.py:finish():595] file stream finish called
+2025-02-03 14:35:16,363 INFO    SenderThread:1107284 [file_stream.py:finish():599] file stream finish is done
+2025-02-03 14:35:16,363 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 13
+2025-02-03 14:35:16,363 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:16,364 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 13
+2025-02-03 14:35:16,364 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:16,365 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 13
+2025-02-03 14:35:16,365 INFO    SenderThread:1107284 [sender.py:transition_state():617] send defer: 14
+2025-02-03 14:35:16,365 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: defer
+2025-02-03 14:35:16,365 INFO    HandlerThread:1107284 [handler.py:handle_request_defer():172] handle defer: 14
+2025-02-03 14:35:16,366 DEBUG   SenderThread:1107284 [sender.py:send():382] send: final
+2025-02-03 14:35:16,367 DEBUG   SenderThread:1107284 [sender.py:send():382] send: footer
+2025-02-03 14:35:16,367 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: defer
+2025-02-03 14:35:16,367 INFO    SenderThread:1107284 [sender.py:send_request_defer():613] handle sender defer: 14
+2025-02-03 14:35:16,368 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-03 14:35:16,369 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: poll_exit
+2025-02-03 14:35:16,370 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: poll_exit
+2025-02-03 14:35:16,370 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: poll_exit
+2025-02-03 14:35:16,371 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: server_info
+2025-02-03 14:35:16,372 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: server_info
+2025-02-03 14:35:16,372 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: get_summary
+2025-02-03 14:35:16,376 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: sampled_history
+2025-02-03 14:35:16,377 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: internal_messages
+2025-02-03 14:35:16,377 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: job_info
+2025-02-03 14:35:16,425 DEBUG   SenderThread:1107284 [sender.py:send_request():409] send_request: job_info
+2025-02-03 14:35:16,426 INFO    MainThread:1107284 [wandb_run.py:_footer_history_summary_info():3857] rendering history
+2025-02-03 14:35:16,427 INFO    MainThread:1107284 [wandb_run.py:_footer_history_summary_info():3889] rendering summary
+2025-02-03 14:35:16,427 INFO    MainThread:1107284 [wandb_run.py:_footer_sync_info():3816] logging synced files
+2025-02-03 14:35:16,428 DEBUG   HandlerThread:1107284 [handler.py:handle_request():146] handle_request: shutdown
+2025-02-03 14:35:16,428 INFO    HandlerThread:1107284 [handler.py:finish():869] shutting down handler
+2025-02-03 14:35:17,378 INFO    WriterThread:1107284 [datastore.py:close():296] close: /home/yec23006/projects/research/merfish/FasterRCNN/wandb/run-20250203_143405-4ydxolh3/run-4ydxolh3.wandb
+2025-02-03 14:35:17,426 INFO    SenderThread:1107284 [sender.py:finish():1572] shutting down sender
+2025-02-03 14:35:17,426 INFO    SenderThread:1107284 [file_pusher.py:finish():175] shutting down file pusher
+2025-02-03 14:35:17,426 INFO    SenderThread:1107284 [file_pusher.py:join():181] waiting for file pusher
