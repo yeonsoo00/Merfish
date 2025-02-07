@@ -1,1 +1,8 @@
+# Wandb
 wandb/
+
+# Data folder
+Data/
+
+# pth
+*.pth
