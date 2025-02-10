@@ -3,21 +3,27 @@ import cv2
 import numpy as np
 import torch
 import torchvision.transforms as T
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset, DataLoader, Subset
 import torchvision.models.detection as detection
 import torch.optim as optim
+from sklearn.model_selection import train_test_split
 from itertools import islice
 import wandb
+from torchvision.ops import box_iou
 import argparse
 import datetime
+"""
+TODO 
+ - Add measurements : iou,  cell count number..
 
+"""
 class PatchingCellDataset(Dataset):
     def __init__(self, root_dir, resize=False, transform=None):
         self.root_dir = root_dir
         self.image_paths = []
         self.mask_paths = []
         self.resize = resize
-        self.img_size = 300
+        self.img_size = 256
         self.transform = transform
 
         # Traverse dataset directories
@@ -104,43 +110,8 @@ def collate_fn(batch):
 
     return filtered_images, filtered_targets
 
-def predict_and_visualize_old(model, dataset, idx=0):
-    model.eval()
-    image = dataset[0]
-    target = dataset[1]['boxes']
 
-    image = image.to(device).unsqueeze(0)
-
-    with torch.no_grad():
-        predictions = model(image)
-
-    # Extract predicted bounding boxes and scores
-    pred_boxes = predictions[0]['boxes'].cpu().numpy()
-    pred_scores = predictions[0]['scores'].cpu().numpy()
-
-    # Apply Non-Maximum Suppression (NMS)
-    keep = torch.ops.torchvision.nms(torch.tensor(pred_boxes), torch.tensor(pred_scores), iou_threshold=0.3)
-    pred_boxes = pred_boxes[keep.numpy()]
-
-    # Target visualization
-    image_t = image.cpu().numpy().copy()
-    target_boxes = target.cpu().numpy()
-    for bbox_t in target_boxes:
-        x_min, y_min, x_max, y_max = map(int, bbox_t)
-        cv2.rectangle(image_t, (x_min, y_min), (x_max, y_max), (255, 0, 0), 2)
-
-    # Prediction visualization
-    image_p = image.cpu().numpy().copy()
-    for bbox_p in pred_boxes:
-        x_min, y_min, x_max, y_max = map(int, bbox_p)
-        cv2.rectangle(image_p, (x_min, y_min), (x_max, y_max), (255, 0, 0), 2)
-
-    return image_t, image_p
-
-def predict_and_visualize(model, dataset, idx=0):
-    model.eval()
-    
-    image, target = dataset[idx]  # ✅ Correctly extract image and target
+def predict_and_visualize(model, image, target, iou_thres=0.3):
     target_boxes = target["boxes"]
     
     image = image.to(device).unsqueeze(0)
@@ -154,7 +125,7 @@ def predict_and_visualize(model, dataset, idx=0):
 
     # Apply Non-Maximum Suppression (NMS)
     keep = torch.ops.torchvision.nms(
-        torch.tensor(pred_boxes), torch.tensor(pred_scores), iou_threshold=0.3
+        torch.tensor(pred_boxes), torch.tensor(pred_scores), iou_threshold=iou_thres
     )
     pred_boxes = pred_boxes[keep.numpy()]
 
@@ -176,6 +147,12 @@ def predict_and_visualize(model, dataset, idx=0):
 
     return target_img, pred_img
 
+def calculate_iou(gt_boxes, pred_boxes):
+    """Computes IoU between ground truth boxes and predicted boxes."""
+    if len(gt_boxes) == 0 or len(pred_boxes) == 0:
+        return 0  # No matching boxes
+    iou_matrix = box_iou(gt_boxes, pred_boxes)
+    return iou_matrix.diag().mean().item()
 
 if __name__=="__main__" :
     # Argparser
@@ -184,79 +161,118 @@ if __name__=="__main__" :
     parser.add_argument('--epochs', type=int, default=200)
     parser.add_argument('--batch', type=int, default=16)
     parser.add_argument("--run_name", type=str, default=datetime.datetime.now().strftime("%Y%m%d_%H%M"))
+    parser.add_argument('--iou_thres', type=float, default=0.3)
+    parser.add_argument('--trained', type=bool, default=True)
 
     args = parser.parse_args()
     learning_rate = args.lr
     num_epochs = args.epochs
     batch_size = args.batch
+    iou_thres = args.iou_thres
+    trained = args.trained
 
     # WandB initialization
     wandb.init(project="Merfish",
                config={"learning_rate" : learning_rate,
-                       "num_epochs": learning_rate,
+                       "num_epochs": num_epochs,
+                       "iou_thres" : iou_thres,
                        "batch_size" : batch_size,
                        "architecture" : "SSDwVGG",
                        "data" : "CellBinDB"})
     wandb.run.name = args.run_name
 
-    # Load train data
+    # Load and split data
     dataset = PatchingCellDataset(root_dir="/data/CellBinDB")
-    train_loader = DataLoader(dataset, batch_size=4, shuffle=True, collate_fn=collate_fn)
+    indices = list(range(len(dataset)))
+    train_indices, test_indices = train_test_split(indices, test_size=0.1, random_state=42)
+    train_dataset = Subset(dataset, train_indices)
+    test_dataset = Subset(dataset, test_indices)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, collate_fn=collate_fn)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, collate_fn=collate_fn)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Load pre-trained SSD model
-    model = detection.ssd300_vgg16(pretrained=True)
+    model = detection.ssd300_vgg16(pretrained=trained)
     model.num_classes = 2  # Background + Cells
 
     # Modify classification head to match our dataset (1 object class + background)
     # in_features = model.head.classification_head.num_classes
-    model.head.classification_head.num_classes = 2  # 1 for cells, 1 for background
+    model.head.classification_head.num_classes = 2  
 
     model.to(device)
 
     optimizer = optim.Adam(model.parameters(), lr=0.0001, weight_decay=5e-4)
 
     # Training loop
-
+    num_images_to_log = 20
     for epoch in range(num_epochs):
         model.train()
         epoch_loss = 0
-        best_loss = 400 # init loss
-        target_images, pred_images, input_images = [], [], []
-        
+        best_loss = 400  # Init loss
+
+        # Training Loop
         for images, targets in train_loader:
-            # Move to device
             images = [img.to(device) for img in images]
             targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
 
-            # Forward pass
             loss_dict = model(images, targets)
             loss = sum(loss for loss in loss_dict.values())
 
-            # Backward pass
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
             epoch_loss += loss.item()
+        
 
-        # visualization
-        # for i in range(10):
-        #     target_img, pred_img = predict_and_visualize(model, dataset[i])
-        #     target_img_reshape = target_img.squeeze(0).transpose(1, 2, 0)
-        #     pred_img_reshape = pred_img.squeeze(0).transpose(1, 2, 0)
-        #     target_images.append(wandb.Image(target_img_reshape))
-        #     pred_images.append(wandb.Image(pred_img_reshape))
-        for i in range(10):
-            target_img, pred_img = predict_and_visualize(model, dataset, i)
+        # Evaluation Loop
+        with torch.no_grad():
+            target_images, pred_images = [], []
+            total_iou = 0
+            total_objects = 0
+            image_count = 0
+            total_batches = 0
 
-            target_images.append(wandb.Image(target_img, caption=f"Target {i}"))
-            pred_images.append(wandb.Image(pred_img, caption=f"Prediction {i}"))
+            for batch_idx, (images, targets) in enumerate(test_loader):
+                images = [img.to(device) for img in images]
+                targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
 
-        print(f"Epoch {epoch+1}/{num_epochs}, Loss: {epoch_loss:.4f}")
-        wandb.log({"epoch" : epoch + 1, "loss" : epoch_loss, "Target" : target_images, "Prediction" : pred_images})
+                model.eval()
+                predictions = model(images, targets)
+                
+                for i in range(len(images)):
+                    pred_boxes = predictions[i]["boxes"].cpu()
+                    pred_scores = predictions[i]["scores"].cpu()
+                    gt_boxes = targets[i]["boxes"].cpu()
 
-        if epoch_loss < best_loss :
-            best_loss = epoch_loss
-            torch.save(model.state_dict(), "/home/yec23006/projects/research/merfish/FasterRCNN/Result/ssd_vgg.pth")
+                    if len(pred_boxes) > 0:
+                        keep = torch.ops.torchvision.nms(pred_boxes, pred_scores, iou_threshold=iou_thres)
+                        pred_boxes = pred_boxes[keep]
+                        pred_scores = pred_scores[keep]
+
+                    if len(pred_boxes) > 0 and len(gt_boxes) > 0:
+                        iou = calculate_iou(gt_boxes, pred_boxes)
+                        total_iou += iou
+                        total_objects += len(gt_boxes)
+
+                    if image_count < num_images_to_log:
+                        target_img, pred_img = predict_and_visualize(model, images[i], targets[i], iou_thres)
+                        target_images.append(wandb.Image(target_img, caption=f"Ground Truth {image_count}"))
+                        pred_images.append(wandb.Image(pred_img, caption=f"Prediction {image_count}"))
+                        image_count += 1
+
+                total_batches += 1
+
+                if image_count >= num_images_to_log:
+                    break
+        avg_iou = total_iou / total_objects if total_objects > 0 else 0
+
+        wandb.log({"Epoch" : epoch+1, "Train Loss" : epoch_loss/len(train_loader), "Avg IoU" : avg_iou, "GT" : target_images, "Prediction" : pred_images})
+        print(f"Epoch {epoch+1}/{num_epochs}, Train Loss: {epoch_loss:.4f}, Test Loss: {avg_iou:.4f}")
+
+
+        # Save best model
+        # if (test_loss/len(test_loader)) < best_loss:
+        #     best_loss = test_loss/len(test_loader)
+        #     torch.save(model.state_dict(), "/home/yec23006/projects/research/merfish/FasterRCNN/Result/ssd_vgg.pth")
