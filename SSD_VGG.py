@@ -6,6 +6,9 @@ import torchvision.transforms as T
 from torch.utils.data import Dataset, DataLoader, Subset
 import torchvision.models.detection as detection
 import torch.optim as optim
+from torch.nn.parallel import DistributedDataParallel as DDP
+from torchvision.transforms import functional as F
+from PIL import Image
 from sklearn.model_selection import train_test_split
 from itertools import islice
 import wandb
@@ -159,9 +162,9 @@ if __name__=="__main__" :
     parser = argparse.ArgumentParser()
     parser.add_argument('--lr', type=float, default=0.0001)
     parser.add_argument('--epochs', type=int, default=200)
-    parser.add_argument('--batch', type=int, default=16)
+    parser.add_argument('--batch', type=int, default=32)
     parser.add_argument("--run_name", type=str, default=datetime.datetime.now().strftime("%Y%m%d_%H%M"))
-    parser.add_argument('--iou_thres', type=float, default=0.3)
+    parser.add_argument('--iou_thres', type=float, default=0.5)
     parser.add_argument('--trained', type=bool, default=True)
 
     args = parser.parse_args()
@@ -170,7 +173,7 @@ if __name__=="__main__" :
     batch_size = args.batch
     iou_thres = args.iou_thres
     trained = args.trained
-
+    print(trained)
     # WandB initialization
     wandb.init(project="Merfish",
                config={"learning_rate" : learning_rate,
@@ -178,7 +181,8 @@ if __name__=="__main__" :
                        "iou_thres" : iou_thres,
                        "batch_size" : batch_size,
                        "architecture" : "SSDwVGG",
-                       "data" : "CellBinDB"})
+                       "data" : "CellBinDB",
+                       "pre-trained" : trained})
     wandb.run.name = args.run_name
 
     # Load and split data
@@ -191,6 +195,7 @@ if __name__=="__main__" :
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, collate_fn=collate_fn)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 
     # Load pre-trained SSD model
     model = detection.ssd300_vgg16(pretrained=trained)
@@ -199,7 +204,6 @@ if __name__=="__main__" :
     # Modify classification head to match our dataset (1 object class + background)
     # in_features = model.head.classification_head.num_classes
     model.head.classification_head.num_classes = 2  
-
     model.to(device)
 
     optimizer = optim.Adam(model.parameters(), lr=0.0001, weight_decay=5e-4)
@@ -209,6 +213,7 @@ if __name__=="__main__" :
     for epoch in range(num_epochs):
         model.train()
         epoch_loss = 0
+        eval_loss = 0
         best_loss = 400  # Init loss
 
         # Training Loop
@@ -225,51 +230,57 @@ if __name__=="__main__" :
 
             epoch_loss += loss.item()
         
+        target_images, pred_images = [], []
+        total_objects = 0
+        image_count = 0
+        total_batches = 0
+        # Evaluation Loop           
 
-        # Evaluation Loop
-        with torch.no_grad():
-            target_images, pred_images = [], []
-            total_iou = 0
-            total_objects = 0
-            image_count = 0
-            total_batches = 0
+        for batch_idx, (images, targets) in enumerate(test_loader):
+            images = [img.to(device) for img in images]
+            targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
 
-            for batch_idx, (images, targets) in enumerate(test_loader):
-                images = [img.to(device) for img in images]
-                targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
+            # get losses
+            model.train()
+            with torch.no_grad():
+                eval_loss_dict = model(images, targets)
+                eval_loss += sum(loss for loss in loss_dict.values()).item()
 
-                model.eval()
+            # get pred
+            model.eval()
+            with torch.no_grad():
                 predictions = model(images, targets)
-                
-                for i in range(len(images)):
-                    pred_boxes = predictions[i]["boxes"].cpu()
-                    pred_scores = predictions[i]["scores"].cpu()
-                    gt_boxes = targets[i]["boxes"].cpu()
+            
+            for i in range(len(images)):
+                pred_boxes = predictions[i]["boxes"].cpu()
+                pred_scores = predictions[i]["scores"].cpu()
+                gt_boxes = targets[i]["boxes"].cpu()
 
-                    if len(pred_boxes) > 0:
-                        keep = torch.ops.torchvision.nms(pred_boxes, pred_scores, iou_threshold=iou_thres)
-                        pred_boxes = pred_boxes[keep]
-                        pred_scores = pred_scores[keep]
 
-                    if len(pred_boxes) > 0 and len(gt_boxes) > 0:
-                        iou = calculate_iou(gt_boxes, pred_boxes)
-                        total_iou += iou
-                        total_objects += len(gt_boxes)
+                if len(pred_boxes) > 0:
+                    keep = torch.ops.torchvision.nms(pred_boxes, pred_scores, iou_threshold=iou_thres)
+                    pred_boxes = pred_boxes[keep]
+                    pred_scores = pred_scores[keep]
 
-                    if image_count < num_images_to_log:
-                        target_img, pred_img = predict_and_visualize(model, images[i], targets[i], iou_thres)
-                        target_images.append(wandb.Image(target_img, caption=f"Ground Truth {image_count}"))
-                        pred_images.append(wandb.Image(pred_img, caption=f"Prediction {image_count}"))
-                        image_count += 1
+                # if len(pred_boxes) > 0 and len(gt_boxes) > 0:
+                #     iou = calculate_iou(gt_boxes, pred_boxes)
+                #     total_iou += iou
+                #     total_objects += len(gt_boxes)
 
-                total_batches += 1
+                if image_count < num_images_to_log:
+                    target_img, pred_img = predict_and_visualize(model, images[i], targets[i], iou_thres)
+                    target_images.append(wandb.Image(target_img, caption=f"Ground Truth {image_count}"))
+                    pred_images.append(wandb.Image(pred_img, caption=f"Prediction {image_count}"))
+                    image_count += 1
 
-                if image_count >= num_images_to_log:
-                    break
-        avg_iou = total_iou / total_objects if total_objects > 0 else 0
+            total_batches += 1
 
-        wandb.log({"Epoch" : epoch+1, "Train Loss" : epoch_loss/len(train_loader), "Avg IoU" : avg_iou, "GT" : target_images, "Prediction" : pred_images})
-        print(f"Epoch {epoch+1}/{num_epochs}, Train Loss: {epoch_loss:.4f}, Test Loss: {avg_iou:.4f}")
+            if image_count >= num_images_to_log:
+                break
+        # avg_iou = total_iou / total_objects if total_objects > 0 else 0
+
+        wandb.log({"Epoch" : epoch+1, "Train Loss" : epoch_loss/len(train_loader), "Test Loss" : eval_loss/len(test_loader), "GT" : target_images, "Prediction" : pred_images})
+        print(f"Epoch {epoch+1}/{num_epochs}, Train Loss: {epoch_loss:.4f}, Test Loss: {eval_loss/len(test_loader):.4f}")
 
 
         # Save best model
