@@ -64,28 +64,27 @@ class PatchingCellDataset(Dataset):
 #     def forward(self, x):
 #         return self.model(x)
 
+class ResidualBlock(nn.Module):
+    """ Residual block to help preserve features and stabilize training """
+    def __init__(self, channels):
+        super(ResidualBlock, self).__init__()
+        self.block = nn.Sequential(
+            nn.Conv2d(channels, channels, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(channels),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(channels, channels, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(channels)
+        )
+
+    def forward(self, x):
+        return x + self.block(x)  # Residual connection
+
 class Generator(nn.Module):
     def __init__(self):
         super(Generator, self).__init__()
 
-        self.upsample = nn.Sequential(
-            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),
-            nn.Conv2d(128, 64, kernel_size=3, stride=1, padding=1),  # Ensure input matches expected channels
-            nn.ReLU(inplace=True)
-        )
-
-        self.final_layer = nn.Sequential(
-            nn.Upsample(scale_factor=4, mode='bilinear', align_corners=True),  # Upsample 16x16 → 64x64
-            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(inplace=True),
-            nn.Upsample(scale_factor=4, mode='bilinear', align_corners=True),  # Upsample 64x64 → 256x256
-            nn.Conv2d(64, 1, kernel_size=7, stride=1, padding=3),
-            nn.Sigmoid()
-        )
-
-        self.model = nn.Sequential(
-            # Encoder
-            nn.Conv2d(1, 64, kernel_size=4, stride=2, padding=1),
+        self.encoder = nn.Sequential(
+            nn.Conv2d(1, 64, kernel_size=4, stride=2, padding=1),  # Downsample
             nn.ReLU(inplace=True),
             nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1),
             nn.BatchNorm2d(128),
@@ -93,80 +92,102 @@ class Generator(nn.Module):
             nn.Conv2d(128, 256, kernel_size=4, stride=2, padding=1),
             nn.BatchNorm2d(256),
             nn.ReLU(inplace=True),
+        )
 
-            # Bottleneck with extra layers
-            nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
-            nn.BatchNorm2d(256),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
-            nn.BatchNorm2d(256),
-            nn.ReLU(inplace=True),
+        # Adding multiple residual blocks in the bottleneck
+        self.res_blocks = nn.Sequential(
+            ResidualBlock(256),
+            ResidualBlock(256),
+            ResidualBlock(256)
+        )
 
-            # Decoder (Upsampling & Adjusting Channels)
-            nn.Conv2d(256, 128, kernel_size=4, stride=2, padding=1),  # Reduce from 256 → 128
+        self.decoder = nn.Sequential(
+            nn.ConvTranspose2d(256, 128, kernel_size=4, stride=2, padding=1),  # Upsample
             nn.BatchNorm2d(128),
             nn.ReLU(inplace=True),
-            
-            self.upsample,  # First Upsample (128 → 64)
-
-            nn.Conv2d(64, 64, kernel_size=4, stride=2, padding=1),  # Ensure 64 → 64 consistency
+            nn.ConvTranspose2d(128, 64, kernel_size=4, stride=2, padding=1),
             nn.BatchNorm2d(64),
             nn.ReLU(inplace=True),
-
-            self.final_layer  # Final Sigmoid Activation
+            nn.ConvTranspose2d(64, 1, kernel_size=4, stride=2, padding=1),  # Output Layer
+            nn.Sigmoid()
         )
 
     def forward(self, x):
-        x = self.model(x)
+        x = self.encoder(x)
+        x = self.res_blocks(x)  # Adding deep feature refinement
+        x = self.decoder(x)
         return x
 
 
 
 
+# ## Unet generator
+# class Generator(nn.Module):
+#     def __init__(self):
+#         super(Generator, self).__init__()
+#         self.encoder = nn.DataParallel(nn.Sequential(
+#             nn.Conv2d(1, 64, kernel_size=4, stride=2, padding=1),
+#             nn.ReLU(inplace=True),
+#             nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1),
+#             nn.BatchNorm2d(128),
+#             nn.ReLU(inplace=True)
+#         ))
+#         self.decoder = nn.DataParallel(nn.Sequential(
+#             nn.ConvTranspose2d(128, 64, kernel_size=4, stride=2, padding=1),
+#             nn.BatchNorm2d(64),
+#             nn.ReLU(inplace=True),
+#             nn.ConvTranspose2d(64, 1, kernel_size=4, stride=2, padding=1),
+#             nn.Sigmoid()
+#         ))
+    
+#     def forward(self, x):
+#         x = self.encoder(x)
+#         x = self.decoder(x)
+#         return x
 
 # Define the Discriminator
-class Discriminator(nn.Module):
-    def __init__(self):
-        super(Discriminator, self).__init__()
-        self.model = nn.DataParallel(nn.Sequential(
-            nn.Conv2d(2, 64, kernel_size=4, stride=2, padding=1),
-            nn.LeakyReLU(0.2, inplace=True),
-            nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(128),
-            nn.LeakyReLU(0.2, inplace=True),
-            nn.Conv2d(128, 1, kernel_size=4, stride=1, padding=1),  # Patch-based output
-            nn.Sigmoid()
-        ))
-    
-    def forward(self, x):
-        return self.model(x)
-
 # class Discriminator(nn.Module):
-#     def __init__(self, in_channels=1):
+#     def __init__(self):
 #         super(Discriminator, self).__init__()
-
-#         self.model = nn.Sequential(
-#             # Spectral Normalization helps stabilize training
-#             nn.utils.spectral_norm(nn.Conv2d(in_channels, 64, kernel_size=4, stride=2, padding=1)),
+#         self.model = nn.DataParallel(nn.Sequential(
+#             nn.Conv2d(2, 64, kernel_size=4, stride=2, padding=1),
 #             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.utils.spectral_norm(nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1)),
+#             nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1),
 #             nn.BatchNorm2d(128),
 #             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.utils.spectral_norm(nn.Conv2d(128, 256, kernel_size=4, stride=2, padding=1)),
-#             nn.BatchNorm2d(256),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.utils.spectral_norm(nn.Conv2d(256, 512, kernel_size=4, stride=1, padding=1)),
-#             nn.BatchNorm2d(512),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.Conv2d(512, 1, kernel_size=4, stride=1, padding=1)
-#         )
-
+#             nn.Conv2d(128, 1, kernel_size=4, stride=1, padding=1),  # Patch-based output
+#             nn.Sigmoid()
+#         ))
+    
 #     def forward(self, x):
 #         return self.model(x)
+
+class Discriminator(nn.Module):
+    def __init__(self, in_channels=1):
+        super(Discriminator, self).__init__()
+
+        self.model = nn.Sequential(
+            # Spectral Normalization helps stabilize training
+            nn.utils.spectral_norm(nn.Conv2d(in_channels, 64, kernel_size=4, stride=2, padding=1)),
+            nn.LeakyReLU(0.2, inplace=True),
+
+            nn.utils.spectral_norm(nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1)),
+            nn.BatchNorm2d(128),
+            nn.LeakyReLU(0.2, inplace=True),
+
+            nn.utils.spectral_norm(nn.Conv2d(128, 256, kernel_size=4, stride=2, padding=1)),
+            nn.BatchNorm2d(256),
+            nn.LeakyReLU(0.2, inplace=True),
+
+            nn.utils.spectral_norm(nn.Conv2d(256, 512, kernel_size=4, stride=1, padding=1)),
+            nn.BatchNorm2d(512),
+            nn.LeakyReLU(0.2, inplace=True),
+
+            nn.Conv2d(512, 1, kernel_size=4, stride=1, padding=1)
+        )
+
+    def forward(self, x):
+        return self.model(x)
 
 # class Discriminator(nn.Module):
 #     def __init__(self):
@@ -231,55 +252,12 @@ class CombinedLoss(nn.Module):
         bcew_loss = self.bcew(pred, target)
         dice_loss_value = dice_loss(pred, target)
         l1_loss_value = self.l1(pred, target)
-        return (2*bcew_loss + dice_loss_value)/3 #+ self.l1_weight * l1_loss_value
-        
+        return bcew_loss + dice_loss_value + self.l1_weight * l1_loss_value
+        # return dice_loss_value + self.l1_weight * l1_loss_value
 
-
-# Train the GAN with Patch Discriminator and Dice Loss
-def train_gan(generator, discriminator, dataloader, num_epochs, lr, device):
-    generator.to(device)
-    discriminator.to(device)
-
-    criterion = CombinedLoss()
-    g_optimizer = optim.Adam(generator.parameters(), lr=lr)
-    d_optimizer = optim.Adam(discriminator.parameters(), lr=10*lr)
-    
-    
-    for epoch in range(num_epochs):
-        generated_image = []
-        target_image = []
-
-        for real_images, real_masks in dataloader:
-            real_images, real_masks = real_images.to(device), real_masks.to(device)
-
-            discriminator.zero_grad()
-            real_inputs = torch.cat((real_images, real_masks), dim=1) # Input of the Discriminator
-            real_outputs = discriminator(real_inputs) # Probability map (Confidence score)
-            d_loss_real = criterion(real_outputs, torch.ones_like(real_outputs, device=device))
-            
-            fake_masks = generator(real_images) # Predicted Mask
-            fake_inputs = torch.cat((real_images, fake_masks), dim=1)
-            fake_outputs = discriminator(fake_inputs.detach())
-            d_loss_fake = criterion(fake_outputs, torch.zeros_like(fake_outputs, device=device))
-            d_loss = d_loss_real + d_loss_fake
-            d_loss.backward()
-            d_optimizer.step()
-
-            generated_image += [wandb.Image(im) for im in fake_masks] # wandb
-            target_image += [wandb.Image(im) for im in real_masks] # wandb
-
-            generator.zero_grad()
-            fake_outputs = discriminator(fake_inputs)
-            g_loss_gan = criterion(fake_outputs, torch.ones_like(fake_outputs, device=device))  # Fooling D
-            g_loss_dice = dice_loss(fake_masks, real_masks)  # Ensuring segmentation quality
-            g_loss = g_loss_gan + 50 * g_loss_dice  # Combined loss
-            g_loss.backward()
-            g_optimizer.step()
-
-        print(f"Epoch [{epoch+1}/{num_epochs}], D Loss: {d_loss.item():.4f}, G Loss: {g_loss.item():.4f}")
-        wandb.log({"Epoch" : epoch, "D loss" : d_loss, "G loss" : g_loss, "Generated Mask" : generated_image[0:20], "True Mask" : target_image[0:20]})
-    print("Training completed.")
-
+def wasserstein_loss(real_preds, fake_preds):
+    """WGAN loss: real should be high (+1), fake should be low (-1)"""
+    return -torch.mean(real_preds) + torch.mean(fake_preds)
 
 
 if __name__ == "__main__":
@@ -288,7 +266,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr', type=float, default=0.0001)
     parser.add_argument('--num_epochs', type=int, default=200)
     parser.add_argument('--save2', type=str, default='/home/yec23006/projects/research/merfish/Result/GAN')
-    parser.add_argument("--model", type=str, default="BottleneckGAN")
+    parser.add_argument("--model", type=str, default="ResidualGAN")
     parser.add_argument("--batch_size", type=int, default="32")
     parser.add_argument("--data", type=str, default="CellBinDB")
     parser.add_argument("--run_name", type=str, default=datetime.datetime.now().strftime("%Y%m%d_%H%M"))
@@ -298,6 +276,7 @@ if __name__ == "__main__":
     num_epochs = args.num_epochs
     batch_size = args.batch_size
     save2path = args.save2
+    
 
     # Wantdb initialization
     wandb.init(project = "Merfish",
@@ -316,11 +295,73 @@ if __name__ == "__main__":
     dataset = PatchingCellDataset(root_dir)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-    generator = Generator()
-    discriminator = Discriminator()
+    generator = Generator().to(device)
+    discriminator = Discriminator().to(device)
+    criterion = CombinedLoss()
 
-    train_gan(generator, discriminator, dataloader, num_epochs=num_epochs, lr=learning_rate, device=device)
+    beta1, beta2 = 0.5, 0.9
+    optimizer_G = optim.Adam(generator.parameters(), lr=learning_rate, betas=(beta1, beta2))
+    optimizer_D = optim.Adam(discriminator.parameters(), lr=learning_rate, betas=(beta1, beta2))
+    critic_steps = 5
+    lambda_gp = 10
+    lambda_pixel = 100
 
-    torch.save(generator.state_dict(), os.path.join(save2path, "gan_cell_detection.pth"))
+    for epoch in range(num_epochs):
+        generated_image = []
+        real_input_image = []
+        target_image = []
+
+        for i, (real_images, target_images) in enumerate(dataloader):  # Assuming `dataloader` is defined
+            real_images = real_images.to(device)
+            target_images = target_images.to(device)
+            batch_size = real_images.size(0)
+
+            ### Train Discriminator ###
+            optimizer_D.zero_grad()
+
+            # Generate fake images
+            noise = torch.randn(batch_size, 1, real_images.shape[2], real_images.shape[3]).to(device)
+            fake_images = generator(noise)
+
+            # Discriminator outputs
+            real_preds = discriminator(real_images)
+            fake_preds = discriminator(fake_images.detach())  # Detach to prevent generator update
+
+            # Compute gradient penalty
+            gp = compute_gradient_penalty(discriminator, real_images, fake_images, device)
+
+            d_loss_real = criterion(real_preds, torch.ones_like(real_preds, device=device))
+            d_loss_fake = criterion(fake_preds, torch.ones_like(fake_preds, device=device))
+            d_loss = d_loss_real + d_loss_fake
+            d_loss.backward()
+            optimizer_D.step()
+
+
+            if i % critic_steps == 0:
+                optimizer_G.zero_grad()
+
+                # Generate fake images again
+                fake_images = generator(noise)
+                fake_preds = discriminator(fake_images)
+
+                # pixel_loss = torch.nn.functional.l1_loss(fake_images, target_images)
+
+                # g_loss = -torch.mean(fake_preds) + lambda_pixel * pixel_loss
+                g_loss = criterion(target_images, fake_images)
+
+                # Backprop and update Generator
+                g_loss.backward()
+                optimizer_G.step()
+
+                generated_image+=[wandb.Image(im) for im in fake_images]
+                real_input_image+=[wandb.Image(im) for im in real_images]
+                target_image+=[wandb.Image(im) for im in target_images]
+
+        # Logging
+        print(f"Epoch [{epoch+1}/{num_epochs}] | D Loss: {d_loss.item():.4f} | G Loss: {g_loss.item():.4f}")
+        wandb.log({"G Loss" : g_loss.item(), "D Loss" : d_loss.item(), "True Mask" : target_image[0:20], "Generated Mask" : generated_image[0:20], "Input Image" : real_input_image})
+    
+
+    torch.save(generator.state_dict(), os.path.join(save2path, "r_generator_cell_detection.pth"))
     print("Generator model saved.")
     wandb.finish()

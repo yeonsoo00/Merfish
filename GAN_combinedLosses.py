@@ -75,13 +75,20 @@ class Generator(nn.Module):
         )
 
         self.final_layer = nn.Sequential(
-            nn.Upsample(scale_factor=4, mode='bilinear', align_corners=True),  # Upsample 16x16 → 64x64
+            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),  # Upsample 16x16 → 32x32
             nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
             nn.ReLU(inplace=True),
-            nn.Upsample(scale_factor=4, mode='bilinear', align_corners=True),  # Upsample 64x64 → 256x256
-            nn.Conv2d(64, 1, kernel_size=7, stride=1, padding=3),
+            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),  # Upsample 32x32 → 64x64
+            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+            nn.ReLU(inplace=True),
+            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),  # Upsample 64x64 → 128x128
+            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+            nn.ReLU(inplace=True),
+            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),  # Upsample 128x128 → 256x256
+            nn.Conv2d(64, 1, kernel_size=3, stride=1, padding=1),  # Ensure final mask matches input size
             nn.Sigmoid()
         )
+
 
         self.model = nn.Sequential(
             # Encoder
@@ -121,9 +128,6 @@ class Generator(nn.Module):
         return x
 
 
-
-
-
 # Define the Discriminator
 class Discriminator(nn.Module):
     def __init__(self):
@@ -140,49 +144,6 @@ class Discriminator(nn.Module):
     
     def forward(self, x):
         return self.model(x)
-
-# class Discriminator(nn.Module):
-#     def __init__(self, in_channels=1):
-#         super(Discriminator, self).__init__()
-
-#         self.model = nn.Sequential(
-#             # Spectral Normalization helps stabilize training
-#             nn.utils.spectral_norm(nn.Conv2d(in_channels, 64, kernel_size=4, stride=2, padding=1)),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.utils.spectral_norm(nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1)),
-#             nn.BatchNorm2d(128),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.utils.spectral_norm(nn.Conv2d(128, 256, kernel_size=4, stride=2, padding=1)),
-#             nn.BatchNorm2d(256),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.utils.spectral_norm(nn.Conv2d(256, 512, kernel_size=4, stride=1, padding=1)),
-#             nn.BatchNorm2d(512),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.Conv2d(512, 1, kernel_size=4, stride=1, padding=1)
-#         )
-
-#     def forward(self, x):
-#         return self.model(x)
-
-# class Discriminator(nn.Module):
-#     def __init__(self):
-#         super(Discriminator, self).__init__()
-#         self.model = nn.DataParallel(nn.Sequential(
-#             nn.utils.spectral_norm(nn.Conv2d(2, 64, kernel_size=4, stride=2, padding=1)),
-#             nn.LeakyReLU(0.2, inplace=True),
-#             nn.utils.spectral_norm(nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1)),
-#             nn.BatchNorm2d(128),
-#             nn.LeakyReLU(0.2, inplace=True),
-#             nn.utils.spectral_norm(nn.Conv2d(128, 1, kernel_size=4, stride=1, padding=1)),
-#             nn.Sigmoid()
-#         ))
-    
-#     def forward(self, x):
-#         return self.model(x)
 
 def compute_gradient_penalty(D, real_samples, fake_samples, device="cuda"):
     """Calculates the gradient penalty for WGAN-GP"""
@@ -206,33 +167,60 @@ def compute_gradient_penalty(D, real_samples, fake_samples, device="cuda"):
     return gradient_penalty
 
 
-# Custom Loss Function (BCE + Dice Loss)
-def dice_loss(pred, target, smooth=1.0):
-    intersection = (pred * target).sum()
-    return 1 - (2. * intersection + smooth) / (pred.sum() + target.sum() + smooth)
-
-def combined_loss(pred, target):
-    bce = nn.BCELoss()(pred, target)
-    dice = dice_loss(pred, target)
-    l1 = nn.L1Loss()(pred, target)  # L1 Regularization
-    return 2*bce + dice + 0.1 * l1
-
-
 class CombinedLoss(nn.Module):
-    def __init__(self, l1_weight=0.05):
+    def __init__(self, lambda_gan=1, lambda_dice=50, lambda_l1=10):
+        """
+        Combined Loss for GAN-based Segmentation:
+        - lambda_gan: Weight for GAN loss (adversarial loss)
+        - lambda_dice: Weight for Dice loss (segmentation accuracy)
+        - lambda_l1: Weight for L1 loss (optional for smoothness)
+        """
         super(CombinedLoss, self).__init__()
-        # self.bce = nn.BCELoss()
-        self.bcew = nn.BCEWithLogitsLoss(pos_weight=torch.tensor([0.7], dtype=torch.float32).to(device))
-        self.l1 = nn.L1Loss()
-        self.l1_weight = l1_weight
-
-    def forward(self, pred, target):
-        # bce_loss = self.bce(pred, target)
-        bcew_loss = self.bcew(pred, target)
-        dice_loss_value = dice_loss(pred, target)
-        l1_loss_value = self.l1(pred, target)
-        return (2*bcew_loss + dice_loss_value)/3 #+ self.l1_weight * l1_loss_value
+        self.lambda_gan = lambda_gan
+        self.lambda_dice = lambda_dice
+        self.lambda_l1 = lambda_l1
         
+        self.bce = nn.BCEWithLogitsLoss()  # Adversarial loss for D
+        self.l1_loss = nn.L1Loss()  # Smoothness loss
+
+    def dice_loss(self, preds, targets, smooth=1):
+        """
+        Dice Loss for segmentation accuracy.
+        preds: Generated mask (from G, should be [0,1])
+        targets: Ground truth mask (should be [0,1])
+        """
+        # preds = torch.sigmoid(preds)  # Ensure outputs are in [0,1]
+        intersection = (preds * targets).sum(dim=(2,3))
+        union = preds.sum(dim=(2,3)) + targets.sum(dim=(2,3))
+        dice = (2. * intersection + smooth) / (union + smooth)
+        return 1 - dice.mean()  # Dice loss should be minimized
+
+    def forward(self, fake_outputs, fake_masks=None, real_masks=None, real_or_fake="fake"):
+        """
+        Computes the combined loss for Generator or Discriminator.
+        - fake_outputs: Output from discriminator
+        - fake_masks: Output from generator (predicted mask)
+        - real_masks: Ground truth mask
+        - real_or_fake: "real" for D-loss, "fake" for G-loss
+        """
+        # Adversarial Loss (GAN Loss)
+        if real_or_fake == "real":
+            adversarial_loss = self.bce(fake_outputs, torch.ones_like(fake_outputs))
+        else:
+            adversarial_loss = self.bce(fake_outputs, torch.zeros_like(fake_outputs))
+
+        # Compute Dice Loss ONLY if we are training the generator
+        dice_loss = 0
+        l1_loss = 0
+        if fake_masks is not None and real_masks is not None:
+            dice_loss = self.dice_loss(fake_masks, real_masks)
+            l1_loss = self.l1_loss(fake_masks, real_masks)
+
+        # Return loss based on mode (D or G)
+        if real_or_fake == "fake":
+            return self.lambda_gan * adversarial_loss + self.lambda_dice * dice_loss + self.lambda_l1 * l1_loss
+        else:
+            return adversarial_loss  # Only adversarial loss for Discriminator
 
 
 # Train the GAN with Patch Discriminator and Dice Loss
@@ -245,38 +233,42 @@ def train_gan(generator, discriminator, dataloader, num_epochs, lr, device):
     d_optimizer = optim.Adam(discriminator.parameters(), lr=10*lr)
     
     
+    criterion = CombinedLoss(lambda_gan=1, lambda_dice=100, lambda_l1=10)  # Adjust weights
+
     for epoch in range(num_epochs):
         generated_image = []
         target_image = []
-
         for real_images, real_masks in dataloader:
             real_images, real_masks = real_images.to(device), real_masks.to(device)
 
+            ### Train Discriminator ###
             discriminator.zero_grad()
-            real_inputs = torch.cat((real_images, real_masks), dim=1) # Input of the Discriminator
-            real_outputs = discriminator(real_inputs) # Probability map (Confidence score)
-            d_loss_real = criterion(real_outputs, torch.ones_like(real_outputs, device=device))
+            real_inputs = torch.cat((real_images, real_masks), dim=1)
+            real_outputs = discriminator(real_inputs)
+            d_loss_real = criterion(real_outputs, None, None, real_or_fake="real")  # Only GAN loss
             
-            fake_masks = generator(real_images) # Predicted Mask
+            fake_masks = generator(real_images)
             fake_inputs = torch.cat((real_images, fake_masks), dim=1)
-            fake_outputs = discriminator(fake_inputs.detach())
-            d_loss_fake = criterion(fake_outputs, torch.zeros_like(fake_outputs, device=device))
+            fake_outputs = discriminator(fake_inputs.detach())  
+            d_loss_fake = criterion(fake_outputs, None, None, real_or_fake="fake")  # Only GAN loss
+
+            generated_image += [wandb.Image(im) for im in fake_masks] # wandb
+            target_image += [wandb.Image(im) for im in real_masks] # wandb
+            
             d_loss = d_loss_real + d_loss_fake
             d_loss.backward()
             d_optimizer.step()
 
-            generated_image += [wandb.Image(im) for im in fake_masks] # wandb
-            target_image += [wandb.Image(im) for im in real_masks] # wandb
-
+            ### Train Generator ###
             generator.zero_grad()
             fake_outputs = discriminator(fake_inputs)
-            g_loss_gan = criterion(fake_outputs, torch.ones_like(fake_outputs, device=device))  # Fooling D
-            g_loss_dice = dice_loss(fake_masks, real_masks)  # Ensuring segmentation quality
-            g_loss = g_loss_gan + 50 * g_loss_dice  # Combined loss
+            g_loss = criterion(fake_outputs, fake_masks, real_masks, real_or_fake="fake")  # Full loss
+            
             g_loss.backward()
             g_optimizer.step()
 
         print(f"Epoch [{epoch+1}/{num_epochs}], D Loss: {d_loss.item():.4f}, G Loss: {g_loss.item():.4f}")
+
         wandb.log({"Epoch" : epoch, "D loss" : d_loss, "G loss" : g_loss, "Generated Mask" : generated_image[0:20], "True Mask" : target_image[0:20]})
     print("Training completed.")
 
@@ -285,7 +277,7 @@ def train_gan(generator, discriminator, dataloader, num_epochs, lr, device):
 if __name__ == "__main__":
     # Parser
     parser = argparse.ArgumentParser()
-    parser.add_argument('--lr', type=float, default=0.0001)
+    parser.add_argument('--lr', type=float, default=0.0005)
     parser.add_argument('--num_epochs', type=int, default=200)
     parser.add_argument('--save2', type=str, default='/home/yec23006/projects/research/merfish/Result/GAN')
     parser.add_argument("--model", type=str, default="BottleneckGAN")
