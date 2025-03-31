@@ -21,13 +21,27 @@ TODO
 
 """
 class PatchingCellDataset(Dataset):
-    def __init__(self, root_dir, resize=False, transform=None):
+    def __init__(self, root_dir, resize=False, transform=None, add_noise=True, noise_prob=0.1, salt_vs_pepper=0.05, noise_std=0.1):
+        """
+        Args:
+            root_dir (str): Path to the dataset.
+            resize (bool): Whether to resize the image.
+            transform: Additional transformations.
+            add_noise (bool): If True, applies salt & pepper noise.
+            noise_prob (float): Probability of pixels being altered (default 2%).
+            salt_vs_pepper (float): Ratio of salt (1) vs. pepper (0) noise.
+            noise_std (float) : Standard deviation for the Gaussian noise
+        """
         self.root_dir = root_dir
         self.image_paths = []
         self.mask_paths = []
         self.resize = resize
         self.img_size = 256
         self.transform = transform
+        self.add_noise = add_noise
+        self.noise_prob = noise_prob
+        self.salt_vs_pepper = salt_vs_pepper 
+        self.noise_std = noise_std
 
         # Traverse dataset directories
         for subdir in ["10xGenomics_DAPI", "DAPI", "ssDNA"]:
@@ -43,6 +57,35 @@ class PatchingCellDataset(Dataset):
 
     def __len__(self):
         return len(self.image_paths)
+    
+    def add_gaussian_noise(self, image):
+        """ Add Gaussian noise to an image """
+        noise = np.random.normal(0, self.noise_std, image.shape).astype(np.float32)
+        noisy_image = image + noise
+        noisy_image = np.clip(noisy_image, 0, 1)  # Ensure values are between 0 and 1
+        return noisy_image
+
+    def add_salt_and_pepper_noise(self, image):
+        """
+        Add salt and pepper noise to the image.
+        """
+        # Create a copy of the image
+        noisy_image = np.copy(image)
+
+        # Compute total number of pixels to alter
+        num_pixels = int(self.noise_prob * image.size)
+        num_salt = int(num_pixels * self.salt_vs_pepper)
+        num_pepper = num_pixels - num_salt
+
+        # Add salt noise (set some pixels to 1)
+        salt_coords = [np.random.randint(0, i, num_salt) for i in image.shape[:2]]
+        noisy_image[salt_coords[0], salt_coords[1], :] = 1  # White pixels
+
+        # Add pepper noise (set some pixels to 0)
+        pepper_coords = [np.random.randint(0, i, num_pepper) for i in image.shape[:2]]
+        noisy_image[pepper_coords[0], pepper_coords[1], :] = 0  # Black pixels
+
+        return noisy_image
 
     def __getitem__(self, idx):
         # Load grayscale image and mask
@@ -52,6 +95,11 @@ class PatchingCellDataset(Dataset):
         # Normalize image
         image = image.astype(np.float32) / 255.0
         image = np.stack([image] * 3, axis=-1)  # Convert to RGB (H, W, 3)
+
+        # Apply Salt & Pepper noise if enabled
+        if self.add_noise:
+            # image = self.add_gaussian_noise(image)
+            image = self.add_salt_and_pepper_noise(image)
 
         # Convert binary mask to instance segmentation mask
         num_labels, instance_mask = cv2.connectedComponents(mask)
@@ -70,7 +118,7 @@ class PatchingCellDataset(Dataset):
 
         bboxes = np.array(bboxes, dtype=np.float32)
 
-        if self.resize : 
+        if self.resize:
             # Resize image and adjust bounding boxes
             orig_h, orig_w = image.shape[:2]
             image = cv2.resize(image, (self.img_size, self.img_size))
@@ -114,7 +162,7 @@ def collate_fn(batch):
     return filtered_images, filtered_targets
 
 
-def predict_and_visualize(model, image, target, iou_thres=0.3):
+def predict_and_visualize(model, image, target, iou_thres=0.1, conf_thresh=0.5):
     target_boxes = target["boxes"]
     
     image = image.to(device).unsqueeze(0)
@@ -126,15 +174,22 @@ def predict_and_visualize(model, image, target, iou_thres=0.3):
     pred_boxes = predictions[0]["boxes"].cpu().numpy()
     pred_scores = predictions[0]["scores"].cpu().numpy()
 
+    # Filter out low-confidence predictions
+    keep_conf = pred_scores > conf_thresh
+    pred_boxes = pred_boxes[keep_conf]
+    pred_scores = pred_scores[keep_conf]
+
     # Apply Non-Maximum Suppression (NMS)
-    keep = torch.ops.torchvision.nms(
-        torch.tensor(pred_boxes), torch.tensor(pred_scores), iou_threshold=iou_thres
+    keep_nms = torch.ops.torchvision.nms(
+        torch.tensor(pred_boxes, dtype=torch.float32),
+        torch.tensor(pred_scores, dtype=torch.float32),
+        iou_threshold=iou_thres
     )
-    pred_boxes = pred_boxes[keep.numpy()]
+    pred_boxes = pred_boxes[keep_nms.numpy()]
 
     # Convert image to NumPy
-    image_np = image.squeeze(0).cpu().numpy().transpose(1, 2, 0)  # Convert (3, H, W) -> (H, W, 3)
-    image_np = (image_np * 255).astype(np.uint8)  # Normalize if needed
+    image_np = image.squeeze(0).cpu().numpy().transpose(1, 2, 0)  # (3, H, W) -> (H, W, 3)
+    image_np = (image_np * 255).astype(np.uint8)
 
     # Visualization for target (Ground Truth)
     target_img = image_np.copy()
@@ -150,6 +205,7 @@ def predict_and_visualize(model, image, target, iou_thres=0.3):
 
     return target_img, pred_img
 
+
 def calculate_iou(gt_boxes, pred_boxes):
     """Computes IoU between ground truth boxes and predicted boxes."""
     if len(gt_boxes) == 0 or len(pred_boxes) == 0:
@@ -162,9 +218,9 @@ if __name__=="__main__" :
     parser = argparse.ArgumentParser()
     parser.add_argument('--lr', type=float, default=0.0001)
     parser.add_argument('--epochs', type=int, default=200)
-    parser.add_argument('--batch', type=int, default=32)
+    parser.add_argument('--batch', type=int, default=64)
     parser.add_argument("--run_name", type=str, default=datetime.datetime.now().strftime("%Y%m%d_%H%M"))
-    parser.add_argument('--iou_thres', type=float, default=0.5)
+    parser.add_argument('--iou_thres', type=float, default=0.2)
     parser.add_argument('--trained', type=bool, default=True)
 
     args = parser.parse_args()
@@ -173,7 +229,6 @@ if __name__=="__main__" :
     batch_size = args.batch
     iou_thres = args.iou_thres
     trained = args.trained
-    print(trained)
     # WandB initialization
     wandb.init(project="Merfish",
                config={"learning_rate" : learning_rate,
@@ -182,7 +237,8 @@ if __name__=="__main__" :
                        "batch_size" : batch_size,
                        "architecture" : "SSDwVGG",
                        "data" : "CellBinDB",
-                       "pre-trained" : trained})
+                       "pre-trained" : trained,
+                       "augmentation" : True})
     wandb.run.name = args.run_name
 
     # Load and split data
@@ -202,11 +258,10 @@ if __name__=="__main__" :
     model.num_classes = 2  # Background + Cells
 
     # Modify classification head to match our dataset (1 object class + background)
-    # in_features = model.head.classification_head.num_classes
     model.head.classification_head.num_classes = 2  
     model.to(device)
 
-    optimizer = optim.Adam(model.parameters(), lr=0.0001, weight_decay=5e-4)
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=5e-4)
 
     # Training loop
     num_images_to_log = 20
@@ -214,7 +269,7 @@ if __name__=="__main__" :
         model.train()
         epoch_loss = 0
         eval_loss = 0
-        best_loss = 400  # Init loss
+        best_loss = 5  # Init loss
 
         # Training Loop
         for images, targets in train_loader:
@@ -278,12 +333,14 @@ if __name__=="__main__" :
             if image_count >= num_images_to_log:
                 break
         # avg_iou = total_iou / total_objects if total_objects > 0 else 0
+        test_loss = eval_loss/len(test_loader)
 
-        wandb.log({"Epoch" : epoch+1, "Train Loss" : epoch_loss/len(train_loader), "Test Loss" : eval_loss/len(test_loader), "GT" : target_images, "Prediction" : pred_images})
-        print(f"Epoch {epoch+1}/{num_epochs}, Train Loss: {epoch_loss:.4f}, Test Loss: {eval_loss/len(test_loader):.4f}")
+        wandb.log({"Epoch" : epoch+1, "Train Loss" : epoch_loss/len(train_loader), "Test Loss" : test_loss, "GT" : target_images, "Prediction" : pred_images})
+        print(f"Epoch {epoch+1}/{num_epochs}, Train Loss: {epoch_loss/len(train_loader):.4f}, Test Loss: {test_loss:.4f}")
 
 
         # Save best model
-        # if (test_loss/len(test_loader)) < best_loss:
-        #     best_loss = test_loss/len(test_loader)
-        #     torch.save(model.state_dict(), "/home/yec23006/projects/research/merfish/FasterRCNN/Result/ssd_vgg.pth")
+        if test_loss < best_loss:
+            best_loss = test_loss
+            print(f'Model in Epoch {epoch+1} is saved!',)
+            torch.save(model.state_dict(), "/home/yec23006/projects/research/merfish/FasterRCNN/Result/ssd_vgg_aug.pth")
