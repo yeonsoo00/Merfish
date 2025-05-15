@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import datetime
 from sklearn.metrics import jaccard_score, f1_score
 import argparse
+from AttentionUnetModel import *
 
 class PatchingCellDataset(Dataset):
     def __init__(self, root_dir, add_gaussian_noise=False, add_sp_noise=False, gaussian_std=0.05, sp_prob=0.01):
@@ -63,90 +64,12 @@ class PatchingCellDataset(Dataset):
         noisy[salt_pepper > 1 - prob / 2] = 1.0  # salt
         return noisy
 
-# Define the Generator with Transposed Convolutions
-# class Generator(nn.Module):
-#     def __init__(self):
-#         super(Generator, self).__init__()
-#         self.model = nn.DataParallel(nn.Sequential(
-#             nn.Conv2d(1, 64, kernel_size=4, stride=2, padding=1),
-#             nn.ReLU(inplace=True),
-#             nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1),
-#             nn.BatchNorm2d(128),
-#             nn.ReLU(inplace=True),
-#             nn.Upsample(scale_factor=2, mode='nearest'),  # Upsampling instead of ConvTranspose2d
-#             nn.Conv2d(128, 64, kernel_size=3, stride=1, padding=1),  # Regular Conv2D
-#             nn.BatchNorm2d(64),
-#             nn.ReLU(inplace=True),
-#             nn.Upsample(scale_factor=2, mode='nearest'),  # Another upsampling
-#             nn.Conv2d(64, 1, kernel_size=3, stride=1, padding=1),  # Regular Conv2D
-#             nn.Sigmoid()
-#         ))
-    
-#     def forward(self, x):
-#         return self.model(x)
-
-class Generator(nn.Module):
-    def __init__(self):
-        super(Generator, self).__init__()
-
-        self.upsample = nn.Sequential(
-            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),
-            nn.Conv2d(128, 64, kernel_size=3, stride=1, padding=1),  # Ensure input matches expected channels
-            nn.ReLU(inplace=True)
-        )
-
-        self.final_layer = nn.Sequential(
-            nn.Upsample(scale_factor=4, mode='bilinear', align_corners=True),  # Upsample 16x16 → 64x64
-            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(inplace=True),
-            nn.Upsample(scale_factor=4, mode='bilinear', align_corners=True),  # Upsample 64x64 → 256x256
-            nn.Conv2d(64, 1, kernel_size=7, stride=1, padding=3),
-            nn.Sigmoid()
-        )
-
-        self.model = nn.Sequential(
-            # Encoder
-            nn.Conv2d(1, 64, kernel_size=4, stride=2, padding=1),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(128),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(128, 256, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(256),
-            nn.ReLU(inplace=True),
-
-            # Bottleneck with extra layers
-            nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
-            nn.BatchNorm2d(256),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
-            nn.BatchNorm2d(256),
-            nn.ReLU(inplace=True),
-
-            # Decoder (Upsampling & Adjusting Channels)
-            nn.Conv2d(256, 128, kernel_size=4, stride=2, padding=1),  # Reduce from 256 → 128
-            nn.BatchNorm2d(128),
-            nn.ReLU(inplace=True),
-            
-            self.upsample,  # First Upsample (128 → 64)
-
-            nn.Conv2d(64, 64, kernel_size=4, stride=2, padding=1),  # Ensure 64 → 64 consistency
-            nn.BatchNorm2d(64),
-            nn.ReLU(inplace=True),
-
-            self.final_layer  # Final Sigmoid Activation
-        )
-
-    def forward(self, x):
-        x = self.model(x)
-        return x
-
 
 # Define the Discriminator
 class Discriminator(nn.Module):
     def __init__(self):
         super(Discriminator, self).__init__()
-        self.model = nn.DataParallel(nn.Sequential(
+        self.model = nn.Sequential(
             nn.Conv2d(2, 64, kernel_size=4, stride=2, padding=1),
             nn.LeakyReLU(0.2, inplace=True),
             nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1),
@@ -154,53 +77,11 @@ class Discriminator(nn.Module):
             nn.LeakyReLU(0.2, inplace=True),
             nn.Conv2d(128, 1, kernel_size=4, stride=1, padding=1),  # Patch-based output
             nn.Sigmoid()
-        ))
+        )
     
     def forward(self, x):
         return self.model(x)
 
-# class Discriminator(nn.Module):
-#     def __init__(self, in_channels=1):
-#         super(Discriminator, self).__init__()
-
-#         self.model = nn.Sequential(
-#             # Spectral Normalization helps stabilize training
-#             nn.utils.spectral_norm(nn.Conv2d(in_channels, 64, kernel_size=4, stride=2, padding=1)),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.utils.spectral_norm(nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1)),
-#             nn.BatchNorm2d(128),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.utils.spectral_norm(nn.Conv2d(128, 256, kernel_size=4, stride=2, padding=1)),
-#             nn.BatchNorm2d(256),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.utils.spectral_norm(nn.Conv2d(256, 512, kernel_size=4, stride=1, padding=1)),
-#             nn.BatchNorm2d(512),
-#             nn.LeakyReLU(0.2, inplace=True),
-
-#             nn.Conv2d(512, 1, kernel_size=4, stride=1, padding=1)
-#         )
-
-#     def forward(self, x):
-#         return self.model(x)
-
-# class Discriminator(nn.Module):
-#     def __init__(self):
-#         super(Discriminator, self).__init__()
-#         self.model = nn.DataParallel(nn.Sequential(
-#             nn.utils.spectral_norm(nn.Conv2d(2, 64, kernel_size=4, stride=2, padding=1)),
-#             nn.LeakyReLU(0.2, inplace=True),
-#             nn.utils.spectral_norm(nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1)),
-#             nn.BatchNorm2d(128),
-#             nn.LeakyReLU(0.2, inplace=True),
-#             nn.utils.spectral_norm(nn.Conv2d(128, 1, kernel_size=4, stride=1, padding=1)),
-#             nn.Sigmoid()
-#         ))
-    
-#     def forward(self, x):
-#         return self.model(x)
 
 def compute_gradient_penalty(D, real_samples, fake_samples, device="cuda"):
     """Calculates the gradient penalty for WGAN-GP"""
@@ -235,26 +116,54 @@ def combined_loss(pred, target):
     l1 = nn.L1Loss()(pred, target)  # L1 Regularization
     return 2*bce + dice + 0.1 * l1
 
+def edge_loss(pred, target):
+    sobel_x = torch.tensor([[1, 0, -1], [2, 0, -2], [1, 0, -1]], dtype=torch.float32, device=pred.device).view(1, 1, 3, 3)
+    sobel_y = torch.tensor([[1, 2, 1], [0, 0, 0], [-1, -2, -1]], dtype=torch.float32, device=pred.device).view(1, 1, 3, 3)
+    
+    grad_pred_x = F.conv2d(pred, sobel_x, padding=1)
+    grad_pred_y = F.conv2d(pred, sobel_y, padding=1)
+    grad_target_x = F.conv2d(target, sobel_x, padding=1)
+    grad_target_y = F.conv2d(target, sobel_y, padding=1)
+
+    grad_pred = torch.sqrt(grad_pred_x**2 + grad_pred_y**2 + 1e-6)
+    grad_target = torch.sqrt(grad_target_x**2 + grad_target_y**2 + 1e-6)
+
+    return F.l1_loss(grad_pred, grad_target)
+
 
 class CombinedLoss(nn.Module):
     def __init__(self, l1_weight=0.05):
         super(CombinedLoss, self).__init__()
-        # self.bce = nn.BCELoss()
-        self.bcew = nn.BCEWithLogitsLoss(pos_weight=torch.tensor([0.7], dtype=torch.float32).to(device))
+        # self.bcew = nn.BCEWithLogitsLoss(pos_weight=torch.tensor([0.7], dtype=torch.float32).to(device))
+        self.register_buffer("pos_weight", torch.tensor([0.7], dtype=torch.float32))
         self.l1 = nn.L1Loss()
         self.l1_weight = l1_weight
 
     def forward(self, pred, target):
-        # bce_loss = self.bce(pred, target)
         bcew_loss = self.bcew(pred, target)
         dice_loss_value = dice_loss(pred, target)
-        l1_loss_value = self.l1(pred, target)
-        return (2*bcew_loss + dice_loss_value)/3 #+ self.l1_weight * l1_loss_value
+        edge_loss_value = edge_loss(pred, target)
+        return (2*bcew_loss + dice_loss_value + 0.2 * edge_loss_value) / 3.2
+    
+    def forward(self, pred, target):
+        bcew = nn.BCEWithLogitsLoss(pos_weight=self.pos_weight.to(pred.device))
+        bcew_loss = bcew(pred, target)
+        dice_loss_value = dice_loss(pred, target)
+        edge_loss_value = edge_loss(pred, target)
+        return (2 * bcew_loss + dice_loss_value + 0.2 * edge_loss_value) / 3.2
         
+def postprocess_mask(mask):
+
+    mask_np = (mask.squeeze().detach().cpu().numpy() > 0.5).astype(np.uint8) * 255
+    kernel = np.ones((3, 3), np.uint8)
+    mask_np = cv2.morphologyEx(mask_np, cv2.MORPH_OPEN, kernel)
+    mask_np = cv2.morphologyEx(mask_np, cv2.MORPH_CLOSE, kernel)
+    return torch.tensor(mask_np, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(mask.device) / 255.0
 
 
 # Train the GAN with Patch Discriminator and Dice Loss
 def train_gan(generator, discriminator, dataloader, num_epochs, lr, device):
+    
     generator.to(device)
     discriminator.to(device)
 
@@ -273,12 +182,13 @@ def train_gan(generator, discriminator, dataloader, num_epochs, lr, device):
             discriminator.zero_grad()
             real_inputs = torch.cat((real_images, real_masks), dim=1) # Input of the Discriminator
             real_outputs = discriminator(real_inputs) # Probability map (Confidence score)
-            d_loss_real = criterion(real_outputs, torch.ones_like(real_outputs, device=device))
-            
-            fake_masks = generator(real_images) # Predicted Mask
-            fake_inputs = torch.cat((real_images, fake_masks), dim=1)
+            d_loss_real = criterion(real_outputs, torch.ones_like(real_outputs, device=real_outputs.device))
+
+            fake_masks = generator(real_images)
+            fake_masks = torch.cat([postprocess_mask(m.unsqueeze(0)) for m in fake_masks], dim=0)
+            fake_inputs = torch.cat((real_images, fake_masks), dim=1)  
             fake_outputs = discriminator(fake_inputs.detach())
-            d_loss_fake = criterion(fake_outputs, torch.zeros_like(fake_outputs, device=device))
+            d_loss_fake = criterion(fake_outputs, torch.zeros_like(fake_outputs, device=real_outputs.device))
             d_loss = d_loss_real + d_loss_fake
             d_loss.backward()
             d_optimizer.step()
@@ -288,14 +198,14 @@ def train_gan(generator, discriminator, dataloader, num_epochs, lr, device):
 
             generator.zero_grad()
             fake_outputs = discriminator(fake_inputs)
-            g_loss_gan = criterion(fake_outputs, torch.ones_like(fake_outputs, device=device))  # Fooling D
+            g_loss_gan = criterion(fake_outputs, torch.ones_like(fake_outputs, device=fake_outputs.device))
             g_loss_dice = dice_loss(fake_masks, real_masks)  # Ensuring segmentation quality
             g_loss = g_loss_gan + 50 * g_loss_dice  # Combined loss
             g_loss.backward()
             g_optimizer.step()
 
         print(f"Epoch [{epoch+1}/{num_epochs}], D Loss: {d_loss.item():.4f}, G Loss: {g_loss.item():.4f}")
-        wandb.log({"Epoch" : epoch, "D loss" : d_loss, "G loss" : g_loss, "Generated Mask" : generated_image[0:20], "True Mask" : target_image[0:20]})
+        wandb.log({"Epoch" : epoch, "D loss" : d_loss, "G loss" : g_loss, "Generated Mask" : generated_image[0:5], "True Mask" : target_image[0:5]})
     print("Training completed.")
 
 
@@ -306,7 +216,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr', type=float, default=0.0001)
     parser.add_argument('--num_epochs', type=int, default=500)
     parser.add_argument('--save2', type=str, default='/home/yec23006/projects/research/merfish/Result/GAN')
-    parser.add_argument("--model", type=str, default="BottleneckGAN")
+    parser.add_argument("--model", type=str, default="AttentionUnet++GAN")
     parser.add_argument("--batch_size", type=int, default="64")
     parser.add_argument("--data", type=str, default="CellBinDBwNoise")
     parser.add_argument("--run_name", type=str, default=datetime.datetime.now().strftime("%Y%m%d_%H%M"))
@@ -330,6 +240,7 @@ if __name__ == "__main__":
 
     root_dir = "/data/CellBinDB"
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Using {torch.cuda.device_count()} GPU(s)")
 
     dataset = PatchingCellDataset(
     root_dir=root_dir,
@@ -341,11 +252,14 @@ if __name__ == "__main__":
 
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-    generator = Generator()
-    discriminator = Discriminator()
+    # generator = Generator()
+    # discriminator = Discriminator()
+    generator = nn.DataParallel(Generator()).to(device)
+    discriminator = nn.DataParallel(Discriminator()).to(device)
+
 
     train_gan(generator, discriminator, dataloader, num_epochs=num_epochs, lr=learning_rate, device=device)
 
-    torch.save(generator.state_dict(), os.path.join(save2path, "gan_cell_detection_w_noise.pth"))
+    torch.save(generator.state_dict(), os.path.join(save2path, "attentionGan_cell_detection_w_noise.pth"))
     print("Generator model saved.")
     wandb.finish()
