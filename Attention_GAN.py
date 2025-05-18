@@ -75,7 +75,7 @@ class Discriminator(nn.Module):
             nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1),
             nn.BatchNorm2d(128),
             nn.LeakyReLU(0.2, inplace=True),
-            nn.Conv2d(128, 1, kernel_size=4, stride=1, padding=1),  # Patch-based output
+            nn.Conv2d(128, 1, kernel_size=4, stride=1, padding=1),
             nn.Sigmoid()
         )
     
@@ -113,7 +113,7 @@ def dice_loss(pred, target, smooth=1.0):
 def combined_loss(pred, target):
     bce = nn.BCELoss()(pred, target)
     dice = dice_loss(pred, target)
-    l1 = nn.L1Loss()(pred, target)  # L1 Regularization
+    l1 = nn.L1Loss()(pred, target)
     return 2*bce + dice + 0.1 * l1
 
 def edge_loss(pred, target):
@@ -181,11 +181,10 @@ def train_gan(generator, discriminator, dataloader, num_epochs, lr, device):
 
             discriminator.zero_grad()
             real_inputs = torch.cat((real_images, real_masks), dim=1) # Input of the Discriminator
-            real_outputs = discriminator(real_inputs) # Probability map (Confidence score)
+            real_outputs = discriminator(real_inputs) # Probability map
             d_loss_real = criterion(real_outputs, torch.ones_like(real_outputs, device=real_outputs.device))
 
             fake_masks = generator(real_images)
-            fake_masks = torch.cat([postprocess_mask(m.unsqueeze(0)) for m in fake_masks], dim=0)
             fake_inputs = torch.cat((real_images, fake_masks), dim=1)  
             fake_outputs = discriminator(fake_inputs.detach())
             d_loss_fake = criterion(fake_outputs, torch.zeros_like(fake_outputs, device=real_outputs.device))
@@ -199,7 +198,7 @@ def train_gan(generator, discriminator, dataloader, num_epochs, lr, device):
             generator.zero_grad()
             fake_outputs = discriminator(fake_inputs)
             g_loss_gan = criterion(fake_outputs, torch.ones_like(fake_outputs, device=fake_outputs.device))
-            g_loss_dice = dice_loss(fake_masks, real_masks)  # Ensuring segmentation quality
+            g_loss_dice = dice_loss(fake_masks, real_masks) 
             g_loss = g_loss_gan + 50 * g_loss_dice  # Combined loss
             g_loss.backward()
             g_optimizer.step()
@@ -252,8 +251,6 @@ if __name__ == "__main__":
 
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-    # generator = Generator()
-    # discriminator = Discriminator()
     generator = nn.DataParallel(Generator()).to(device)
     discriminator = nn.DataParallel(Discriminator()).to(device)
 
